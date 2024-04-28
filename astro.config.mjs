@@ -60,6 +60,10 @@ export default defineConfig({
               label: 'Activity Types',
               link: '/backend/api/activity_types',
             },
+            {
+              label: 'Error codes',
+              link: '/backend/api/error_codes',
+            },
           ],
         },
         {
