@@ -5,6 +5,7 @@ title: Doubtfire API Documentation
 # API: Activity Types
 
 This "activity_types" API has the following operations.
+
 - **GET**: /api/activity types
 - **POST**: /api/activity types
 - **DELETE**: /api/activity types/{id}
