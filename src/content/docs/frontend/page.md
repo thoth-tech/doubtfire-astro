@@ -2,4 +2,4 @@
 title: Example
 ---
 
-# Add topic 
+# Add topic

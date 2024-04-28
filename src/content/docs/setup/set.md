@@ -83,4 +83,3 @@ git remote add task-view-submission <https://github.com/PROVIDED_USERNAME/doubtf
 ## Helpful Points
 
 - If you are using Windows as your primary operating system and you have not downloaded, installed, and/or set-up MinGW, then a former team found the Linux subsystem [WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install) and [Docker Desktop WSL 2 backend](https://docs.docker.com/desktop/windows/wsl/) as a helpful development environment.
-
