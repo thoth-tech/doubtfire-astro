@@ -2,7 +2,7 @@
 .astro/
 # build output
 dist/
-
+#check
 
 # dependencies
 node_modules/
