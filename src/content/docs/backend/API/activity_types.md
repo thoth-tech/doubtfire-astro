@@ -4,15 +4,18 @@ title: Doubtfire API Documentation
 
 # API: Activity Types
 
-This API Get all the activity types.
+This "activity_types" API has the following operations.
+- **GET**: /api/activity types
+- **POST**: /api/activity types
+- **DELETE**: /api/activity types/{id}
+- **GET**: /api/activity types/{id}
+- **PUT**: /api/activity types/{id}
 
-Operations related to activity types.
+## Detail of Operations related to activity types.
 
-### List Activity Types
+### GET activity_types: gets a list of all activity types.
 
-Returns a list of all activity types.
-
-- **URL**: `/activity_types`
+- **URL**: `http://localhost:3000/api/activity_types`
 - **Method**: `GET`
 - **Parameters**: None
 - **Response**:
@@ -22,11 +25,18 @@ Returns a list of all activity types.
     [
       {
         "id": 1,
-        "name": "Homework"
+        "name": "Practical",
+        "abbreviation": "prac"
       },
       {
         "id": 2,
-        "name": "Quiz"
+        "name": "Workshop",
+        "abbreviation": "wrkshop"
+      },
+      {
+        "id": 3,
+        "name": "Class",
+        "abb
       },
       ...
     ]
