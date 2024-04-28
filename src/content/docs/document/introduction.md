@@ -1,6 +1,5 @@
 ---
-title: OnTrack Technical Documentation 
-
+title: OnTrack Technical Documentation
 ---
 
 ## Introduction
