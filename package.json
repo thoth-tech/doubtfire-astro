@@ -8,7 +8,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "format": "prettier --write \"src/**/*.ts\"",
     "prose:check": "vale ."
   },
   "dependencies": {
@@ -19,7 +19,7 @@
     "typescript": "^5.4.5"
   },
   "devDependencies": {
-    "prettier": "^3.2.5",
+    "prettier": "3.2.5",
     "prettier-plugin-astro": "^0.13.0"
   }
 }
