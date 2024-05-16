@@ -42,7 +42,7 @@ DELETE /api/tutorials/{id}
         true
     ```
 -----------------------------------------------------------------------------
-### PUT: Create a tutorial
+### PUT: Update a tutorial
 PUT /api/tutorials/{id}
 
 - URL: `/api/tutorials/{id}`
@@ -110,7 +110,7 @@ POST /api/tutorials
     
 
 - Response: 
-        `201 Created`
+        `201 Created`: Tutorial added successfully.
 
 - Example Request:
     ```bash
@@ -118,5 +118,5 @@ POST /api/tutorials
     ```
 - Response body: 
     ```
-        null
+        Tutorial added successfully.
     ```
