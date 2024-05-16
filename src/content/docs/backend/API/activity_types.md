@@ -8,11 +8,11 @@ This markdown document provides detailed documentation for the "activity_types" 
 
 This "activity_types" API has the following operations.
 
-- **GET**: /api/activity types
-- **POST**: /api/activity types
-- **DELETE**: /api/activity types/{id}
-- **GET**: /api/activity types/{id}
-- **PUT**: /api/activity types/{id}
+- **GET**: /api/activity_types
+- **POST**: /api/activity_types
+- **DELETE**: /api/activity_types/{id}
+- **GET**: /api/activity_types/{id}
+- **PUT**: /api/activity_types/{id}
 
 ## Detail of Operations related to activity types.
 

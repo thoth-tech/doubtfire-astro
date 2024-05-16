@@ -29,7 +29,7 @@ GET /api/csv/users
 
     | Parameter           | Description     |Parameter Type| Data Type|Mandatory|
     |---------------------|-----------------|------------|------------|---|
-    |Username | enter the username | header | string |Yes|
+    |Username | User username | header | string |Yes|
     |Auth_Token | Authentication token | header | string |Yes|
    
 
@@ -56,7 +56,7 @@ POST /api/csv/users
     | Parameter           | Description     |Parameter Type| Data Type|Mandatory|
     |---------------------|-----------------|------------|------------|---|
     |file | CSV upload file. | formData | file |Yes|
-    |Username | enter the username | header | string |Yes|
+    |Username | User username | header | string |Yes|
     |Auth_Token | Authentication token | header | string |Yes|
    
 
@@ -87,7 +87,7 @@ GET /api/csv/units/{id}/tutor_assessments
 
     | Parameter           | Description     |Parameter Type| Data Type|Mandatory|
     |---------------------|-----------------|------------|------------|---|
-    |Username | enter the username | header | string |Yes|
+    |Username | User username | header | string |Yes|
     |Auth_Token | Authentication token | header | string |Yes|
     |id| |path|integer|Yes|
 - Response:
@@ -112,7 +112,7 @@ GET /api/csv/units/{id}/task_completion
 
     | Parameter           | Description     |Parameter Type| Data Type|Mandatory|
     |---------------------|-----------------|------------|------------|---|
-    |Username | enter the username | header | string |Yes|
+    |Username | User username | header | string |Yes|
     |Auth_Token | Authentication token | header | string |Yes|
     |id| |path|integer|Yes|
 
@@ -138,7 +138,7 @@ GET /api/csv/units/{id}
 
     | Parameter           | Description     |Parameter Type| Data Type|Mandatory|
     |---------------------|-----------------|------------|------------|---|
-    |Username | enter the username | header | string |Yes|
+    |Username | User username | header | string |Yes|
     |Auth_Token | Authentication token | header | string |Yes|
     |id| |path|integer|Yes|
 
@@ -164,7 +164,7 @@ POST /api/csv/units/{id}
     | Parameter           | Description     |Parameter Type| Data Type|Mandatory|
     |---------------------|-----------------|------------|------------|---|
     |file | CSV upload file. | formData | file |Yes|
-    |Username | enter the username | header | string |Yes|
+    |Username | User username | header | string |Yes|
     |Auth_Token | Authentication token | header | string |Yes|
     |id| |path|integer|Yes|
 
@@ -197,7 +197,7 @@ POST /api/csv/units/{id}/withdraw
     | Parameter           | Description     |Parameter Type| Data Type|Mandatory|
     |---------------------|-----------------|------------|------------|---|
     |file | CSV upload file. | formData | file |Yes|
-    |Username | enter the username | header | string |Yes|
+    |Username | User username | header | string |Yes|
     |Auth_Token | Authentication token | header | string |Yes|
     |id| |path|integer|Yes|
 
@@ -230,7 +230,7 @@ GET /api/csv/task_definitions
     | Parameter           | Description     |Parameter Type| Data Type|Mandatory|
     |---------------------|-----------------|------------|------------|---|
     |unit_id|The unit to download tasks from |query|integer|Yes|
-    |Username | enter the username | header | string |Yes|
+    |Username | User username | header | string |Yes|
     |Auth_Token | Authentication token | header | string |Yes|
     
 
@@ -258,7 +258,7 @@ POST /api/csv/task_definitions
     |---------------------|-----------------|------------|------------|---|
     |file | CSV upload file. | formData | file |Yes|
     |unit_id| The unit to upload tasks to |formData|integer|Yes|
-    |Username | enter the username | header | string |Yes|
+    |Username | User username | header | string |Yes|
     |Auth_Token | Authentication token | header | string |Yes|
     
 
