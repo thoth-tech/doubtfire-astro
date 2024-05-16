@@ -48,7 +48,7 @@ DELETE /api/teaching_periods/{teaching_period_id}
 - URL: `/api/teaching_periods/{teaching_period_id}`
 - Method: `DELETE`
 - Parameters: 
-      | Parameter           | Description     |Parameter Type| Data Type|Mandatory|
+    | Parameter           | Description     |Parameter Type| Data Type|Mandatory|
     |---------------------|-----------------|------------|------------|---|
     |Username | User username | header | string |Yes|
     |Auth_Token | Authentication token | header | string |Yes|

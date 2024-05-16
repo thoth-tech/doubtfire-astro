@@ -13,6 +13,7 @@ This "auth" API has the following operations.
 - **PUT** /api/auth
 - **GET** /api/auth/signout_url
 - **GET** /api/auth/method
+- **POST** /api/auth/jwt
 
 ## Detail of Operations related to auth.
 
@@ -142,3 +143,37 @@ GET /api/auth/method
         "redirect_to": null
     }
     ```
+
+### POST: SAML2.0 auth
+POST /api/auth/jwt
+
+- URL: `/api/auth/jwt`
+- Method: `POST`
+- Parameters: 
+    | Parameter           | Description     |Parameter Type| Data Type|Mandatory|
+    |---------------------|-----------------|------------|------------|---|
+    |SAMLResponse | Data provided for further processing | header | string |Yes|
+    
+- Response:
+  - `201 Created`: The JWT token is successfully generated.
+
+- Example Request:
+  ```bash
+  curl -X POST https://your-institution-host/auth/jwt \
+     -H "Content-Type: application/json" \
+     -d '{
+           "SAMLResponse": "Base64EncodedSAMLResponse"
+         }'
+
+  ```
+- Response body:
+    ```json
+    {
+        "token": "your-jwt-token",
+        "user": {
+            "email": "user@example.com",
+            "name": "User Name"
+        }
+    }
+    ```
+
