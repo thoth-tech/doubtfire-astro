@@ -131,8 +131,12 @@ export default defineConfig({
             },
            
             {
-              label: 'units',
+              label: 'units API operation list',
               link: '/backend/api/units',
+            },
+            {
+              label: 'units (1)',
+              link: '/backend/api/units_1',
             },
             {
               label: 'users',
