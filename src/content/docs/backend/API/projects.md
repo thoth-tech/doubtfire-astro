@@ -11,8 +11,7 @@ This markdown document provides detailed documentation for the "projects" API en
 
 This "projects" API has the following operations.
 
-
-## Detail of Operations related to projects.
+## This page consist of list of Operations related to projects (26 operations).
 
 - **GET** /api/projects/{id}/task_def_id/{task_definition_id}/submission_files
 - **GET** /api/projects/{id}/task_def_id/{task_definition_id}/submission_details
@@ -36,8 +35,13 @@ This "projects" API has the following operations.
 - **PUT** /api/projects/{id}
 - **PUT** /api/projects/{project_id}/task_def_id/{task_definition_id}/assess_extension/{task_comment_id}
 - **POST** /api/projects/{project_id}/task_def_id/{task_definition_id}/request_extension
-- **POST** /api/projects/{project_id}/task_def_id/{task_definition_id}/comments/{task_comment_id}/discussion_comment/reply
-- **GET** /api/projects/{project_id}/task_def_id/{task_definition_id}/comments/{task_comment_id}/discussion_comment/response
-- **GET** /api/projects/{project_id}/task_def_id/{task_definition_id}/comments/{task_comment_id}/discussion_comment/prompt_number/{prompt_number}
+- **POST** /api/projects/{project_id}/task_def_id/{task_definition_id}/comments/
+{task_comment_id}/discussion_comment/reply
+- **GET** /api/projects/{project_id}/task_def_id/{task_definition_id}/comments/
+{task_comment_id}/discussion_comment/response
+- **GET** /api/projects/{project_id}/task_def_id/{task_definition_id}/comments/
+{task_comment_id}/discussion_comment/prompt_number/{prompt_number}
 - **POST** /api/projects/{project_id}/task_def_id/{task_definition_id}/discussion_comments
 
+-------------------------------------------
+**See following pages for detailed operations related to Projects API**

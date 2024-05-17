@@ -78,8 +78,16 @@ export default defineConfig({
               link: '/backend/api/csv',
             },
             {
-              label: 'projects',
+              label: 'projects API operation list',
               link: '/backend/api/projects',
+            },
+            {
+              label: 'projects (1)',
+              link: '/backend/api/projects_1',
+            },
+            {
+              label: 'projects (2)',
+              link: '/backend/api/projects_2',
             },
             {
               label: 'setting',
