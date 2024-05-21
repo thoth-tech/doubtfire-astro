@@ -774,8 +774,8 @@ GET /api/units/{unit_id}/learning_alignments/class_stats
 ### DELETE: Delete the alignment between a task and unit outcome
 - **DELETE** /api/units/{unit_id}/learning_alignments/{id}
 
-- URL: ``
-- Method: `` 
+- URL: `/api/units/{unit_id}/learning_alignments/{id}`
+- Method: `DELETE` 
 - Parameter:
 
 
