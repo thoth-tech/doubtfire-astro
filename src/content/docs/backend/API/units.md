@@ -2,7 +2,7 @@
 title: Doubtfire API 
 ---
 
-# List of Doubtfire |||| DETAILS to be added
+# List of Doubtfire 
 
 # API: Units
 units : Operations about units
@@ -74,4 +74,4 @@ This "units" API has the following operations.
 - **POST** /api/units/{unit_id}/group_sets
 
 
-## Detail of Operations related to units
+## Following pages list detailed Operations related to units API
