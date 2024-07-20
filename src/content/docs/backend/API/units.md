@@ -72,6 +72,7 @@ This "units" API has the following operations.
 - **DELETE** /api/units/{unit_id}/group_sets/{id}
 - **PUT** /api/units/{unit_id}/group_sets/{id}
 - **POST** /api/units/{unit_id}/group_sets
+- **POST** /api/units/{unit_id}/group_sets/{group_set_id}/groups
 
 
 ## Following pages list detailed Operations related to units API
