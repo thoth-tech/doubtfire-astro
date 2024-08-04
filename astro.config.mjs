@@ -129,7 +129,6 @@ export default defineConfig({
               label: 'unit_roles',
               link: '/backend/api/unit_roles',
             },
-           
             {
               label: 'units API operation list',
               link: '/backend/api/units',
@@ -154,6 +153,10 @@ export default defineConfig({
             {
               label: 'Error codes',
               link: '/backend/api/error_codes',
+            },
+            {
+              label: 'Unit Tutorial Streams',
+              link: '/backend/api/unit-tutorial_streams',
             },
           ],
         },
