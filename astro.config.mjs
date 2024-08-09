@@ -155,6 +155,10 @@ export default defineConfig({
               label: 'Error codes',
               link: '/backend/api/error_codes',
             },
+            {
+              label: 'Units Task Definition',
+              link: '/backend/api/api-task_definitions',
+            },
           ],
         },
         {
