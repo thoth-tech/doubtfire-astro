@@ -66,7 +66,7 @@ GET /api/admin/overseer_images
 
 - Example Request:
   ```bash
-  curl -X PUT --header 'Accept: application/json' --header 'Username: admin' --header 'Auth_Token: rrK8BdRfxof9RrJGuk5n' 'http://localhost:3000/api/admin/overseer_images'
+  curl -X GET --header 'Accept: application/json' --header 'Username: admin' --header 'Auth_Token: rrK8BdRfxof9RrJGuk5n' 'http://localhost:3000/api/admin/overseer_images'
   ```
 - Response Body:
   ```json
