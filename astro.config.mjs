@@ -158,6 +158,10 @@ export default defineConfig({
               label: 'Unit Tutorial Streams',
               link: '/backend/api/unit-tutorial_streams',
             },
+            {
+              label: 'Unit Group Sets',
+              link: '/backend/api/unit-group_sets',
+            },
           ],
         },
         {
