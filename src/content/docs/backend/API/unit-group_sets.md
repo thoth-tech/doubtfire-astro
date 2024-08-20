@@ -143,7 +143,7 @@ GET /api/units/{unit_id}/group_sets/{group_set_id}/groups/{group_id}/members
 
 ---
 
-### DELETE: update a group
+### DELETE: Delete a group
 
 DELETE /api/units/{unit_id}/group_sets/{group_set_id}/groups/{group_id}
 
@@ -177,7 +177,7 @@ DELETE /api/units/{unit_id}/group_sets/{group_set_id}/groups/{group_id}
 
   ***
 
-### PUT: Remove a group
+### PUT: Update a group
 
 PUT /api/units/{unit_id}/group_sets/{group_set_id}/groups/{group_id}
 
