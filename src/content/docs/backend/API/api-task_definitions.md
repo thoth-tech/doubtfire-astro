@@ -2,10 +2,10 @@
 title: Doubtfire API
 ---
 
-# API: units
+# API: units - Task Definitions
 
-units : Operations about units
-This markdown document provides detailed documentation for the "units" API endpoints, including their URLs, methods, parameters (if any), responses, and example requests using curl.
+units : Operations about Units
+This markdown document provides detailed documentation for the "Task definition" API endpoints, including their URLs, methods, parameters (if any), responses, and example requests using curl.
 
 This "units" API has the following operations.
 
@@ -22,12 +22,12 @@ GET /units/{unit_id}/task_definitions/{task_def_id}/tii_group_attachments
 - URL: `/units/{unit_id}/task_definitions/{task_def_id}/tii_group_attachments`
 - Method: `GET`
 - Parameters:
-  | Parameter | Description |Parameter Type| Data Type|Mandatory|
-  |---------------------|-----------------|--------------|----------|---|
-  |unit_id | Unit ID | path | integer |Yes|
-  |task_def_id | Task Definition ID | path | integer |Yes|
-  |Username | User username | header | string |Yes|
-  |Auth_Token | Authentication token | header | string |Yes|
+  | Parameter           | Description          |Parameter Type| Data Type|Mandatory|
+  |---------------------|----------------------|--------------|----------|---------|
+  |unit_id              | Unit ID              | path         | integer  |Yes      |
+  |task_def_id          | Task Definition ID   | path         | integer  |Yes      |
+  |Username             | User username        | header       | string   |Yes      |
+  |Auth_Token           | Authentication token | header       | string   |Yes      |
 
 - Response:
   `200 OK`
@@ -61,14 +61,14 @@ PUT /units/{unit_id}/task_definitions/{task_def_id}/tii_group_attachments/{id}
 - URL: `/units/{unit_id}/task_definitions/{task_def_id}/tii_group_attachments/{id}`
 - Method: `PUT`
 - Parameters:
-  | Parameter | Description |Parameter Type| Data Type|Mandatory|
-  |---------------------|-----------------|--------------|----------|---|
-  |unit_id | Unit ID | path | integer |Yes|
-  |task_def_id | Task Definition ID | path | integer |Yes|
-  |id | Group Attachment ID | path | integer |Yes|
-  |action | The action to perform (e.g., upload) | query | string |Yes|
-  |Username | User username | header | string |Yes|
-  |Auth_Token | Authentication token | header | string |Yes|
+  | Parameter  | Description                          |Parameter Type| Data Type|Mandatory|
+  |------------|--------------------------------------|--------------|----------|---------|
+  |unit_id     | Unit ID                              | path         | integer  |Yes      |
+  |task_def_id | Task Definition ID                   | path         | integer  |Yes      |
+  |id          | Group Attachment ID                  | path         | integer  |Yes      |
+  |action      | The action to perform (e.g., upload) | query        | string   |Yes      |
+  |Username    | User username                        | header       | string   |Yes      |
+  |Auth_Token  | Authentication token                 | header       | string   |Yes      |
 
 - Response:
   `200 OK`
@@ -95,13 +95,13 @@ DELETE /units/{unit_id}/task_definitions/{task_def_id}/tii_group_attachments/{id
 - URL: `/units/{unit_id}/task_definitions/{task_def_id}/tii_group_attachments/{id}`
 - Method: `DELETE`
 - Parameters:
-  | Parameter | Description |Parameter Type| Data Type|Mandatory|
-  |---------------------|-----------------|--------------|----------|---|
-  |unit_id | Unit ID | path | integer |Yes|
-  |task_def_id | Task Definition ID | path | integer |Yes|
-  |id | Group Attachment ID | path | integer |Yes|
-  |Username | User username | header | string |Yes|
-  |Auth_Token | Authentication token | header | string |Yes|
+  | Parameter  | Description          |Parameter Type| Data Type|Mandatory|
+  |------------|----------------------|--------------|----------|---------|
+  |unit_id     | Unit ID              | path         | integer  |Yes      |
+  |task_def_id | Task Definition ID   | path         | integer  |Yes      |
+  |id          | Group Attachment ID  | path         | integer  |Yes      |
+  |Username    | User username        | header       | string   |Yes      |
+  |Auth_Token  | Authentication token | header       | string   |Yes      |
 
 - Response:
   `204`
