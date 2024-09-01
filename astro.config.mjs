@@ -155,7 +155,16 @@ export default defineConfig({
               label: 'Error codes',
               link: '/backend/api/error_codes',
             },
+            {
+              label: 'Tutorial Streams',
+              link: '/backend/api/Unit-Tutorial Streams.md',
+            },
+            {
+              label: 'Group sets',
+              link: '/backend/api/unit-group_sets',
+            },
           ],
+
         },
         {
           label: 'Team',
