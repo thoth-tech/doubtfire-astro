@@ -17,14 +17,11 @@ This "units" API page has the following operations.
 - **GET** /api/units/{unit_id}/group_sets/{group_set_id}/groups/{group_id}/members
 - **DELETE** /api/units/{unit_id}/group_sets/{group_set_id}/groups/{group_id}
 - **PUT** /api/units/{unit_id}/group_sets/{group_set_id}/groups/{group_id}
-<<<<<<< HEAD
 - **GET** /api/units/{unit_id}/group_sets/{group_set_id}/groups/student_csv
 - **POST** /api/units/{unit_id}/group_sets/{group_set_id}/groups/student_csv
 - **GET** /api/units/{unit_id}/group_sets/{group_set_id}/groups/csv
-- **POSt** /api/units/{unit_id}/group_sets/{group_set_id}/groups/csv
+- **POST** /api/units/{unit_id}/group_sets/{group_set_id}/groups/csv
 - **POST** /api/units/{unit_id}/group_sets/{group_set_id}/groups
-=======
->>>>>>> 07d8b8ad5447c02473126889dd785e6219e6c300
 
 ### DELETE: Remove a group member
 
@@ -49,18 +46,10 @@ DELETE /api/units/{unit_id}/group_sets/{group_set_id}/groups/{group_id}/members/
 
   ```bash
    curl -X DELETE --header 'Accept: application/json' --header 'Username: aadmin' --header 'Auth_Token: Say13yA497H8wSFFXZxh' 'http://localhost:3000/api/units/1/group_sets/2/groups/3/members/4'
-  '
-<<<<<<< HEAD
-=======
-
->>>>>>> 07d8b8ad5447c02473126889dd785e6219e6c300
-  ```
-
 - Response Body:
   ```
         True
   ```
-
 ---
 
 ### POST : Add a member to a group
@@ -83,21 +72,11 @@ POST /api/units/{unit_id}/group_sets/{group_set_id}/groups/{group_id}/members/{p
 - Response: `200 OK`
 
 - Example Request:
-<<<<<<< HEAD
   ```bash
    curl -X POST --header 'Accept: application/json' --header 'Username: aadmin' --header 'Auth_Token: Say13yA497H8wSFFXZxh' 'http://localhost:3000/api/units/1/group_sets/2/groups/3/members/4'
   ```
 - Response Body:
-=======
 
-  ```bash
-   curl -X POST --header 'Accept: application/json' --header 'Username: aadmin' --header 'Auth_Token: Say13yA497H8wSFFXZxh' 'http://localhost:3000/api/units/1/group_sets/2/groups/3/members/4'
-
-  ```
-
-- Response Body:
-
->>>>>>> 07d8b8ad5447c02473126889dd785e6219e6c300
   ```json
   {
     "student_username": "TESTREQ",
@@ -108,14 +87,8 @@ POST /api/units/{unit_id}/group_sets/{group_set_id}/groups/{group_id}/members/{p
     "target_grade": "A"
   }
   ```
-<<<<<<< HEAD
-  ### GET: Get the members of the group
-=======
-
 ---
-
 ### GET: Get the members of the group
->>>>>>> 07d8b8ad5447c02473126889dd785e6219e6c300
 
 GET /api/units/{unit_id}/group_sets/{group_set_id}/groups/{group_id}/members
 
@@ -134,21 +107,10 @@ GET /api/units/{unit_id}/group_sets/{group_set_id}/groups/{group_id}/members
 - Response: `200 OK`
 
 - Example Request:
-<<<<<<< HEAD
   ```bash
    curl -X GET --header 'Accept: application/json' --header 'Username: aadmin' --header 'Auth_Token: Say13yA497H8wSFFXZxh' 'http://localhost:3000/api/units/1/group_sets/2/groups/3/members'
   ```
 - Response Body:
-=======
-
-  ```bash
-   curl -X GET --header 'Accept: application/json' --header 'Username: aadmin' --header 'Auth_Token: Say13yA497H8wSFFXZxh' 'http://localhost:3000/api/units/1/group_sets/2/groups/3/members'
-
-  ```
-
-- Response Body:
-
->>>>>>> 07d8b8ad5447c02473126889dd785e6219e6c300
   ```json
   [
     {
@@ -169,12 +131,7 @@ GET /api/units/{unit_id}/group_sets/{group_set_id}/groups/{group_id}/members
     }
   ]
   ```
-
-<<<<<<< HEAD
-=======
 ---
-
->>>>>>> 07d8b8ad5447c02473126889dd785e6219e6c300
 ### DELETE: Delete a group
 
 DELETE /api/units/{unit_id}/group_sets/{group_set_id}/groups/{group_id}
@@ -194,7 +151,7 @@ DELETE /api/units/{unit_id}/group_sets/{group_set_id}/groups/{group_id}
 - Response: `200 OK`
 
 - Example Request:
-<<<<<<< HEAD
+
   ```bash
    curl -X DELETE --header 'Accept: application/json' --header 'Username: aadmin' --header 'Auth_Token: Say13yA497H8wSFFXZxh' 'http://localhost:3000/api/units/1/group_sets/2/groups/3'
   ```
@@ -202,25 +159,7 @@ DELETE /api/units/{unit_id}/group_sets/{group_set_id}/groups/{group_id}
   ```
   True
   ```
-
 ---
-=======
-
-  ```bash
-   curl -X DELETE --header 'Accept: application/json' --header 'Username: aadmin' --header 'Auth_Token: Say13yA497H8wSFFXZxh' 'http://localhost:3000/api/units/1/group_sets/2/groups/3'
-
-  ```
-
-- Response Body:
-
-  ```
-  True
-
-  ```
-
-  ***
->>>>>>> 07d8b8ad5447c02473126889dd785e6219e6c300
-
 ### PUT: Update a group
 
 PUT /api/units/{unit_id}/group_sets/{group_set_id}/groups/{group_id}
@@ -244,21 +183,10 @@ PUT /api/units/{unit_id}/group_sets/{group_set_id}/groups/{group_id}
 - Response: `200 OK`
 
 - Example Request:
-<<<<<<< HEAD
   ```bash
    curl -X PUT --header 'Accept: application/json' --header 'Username: aadmin' --header 'Auth_Token: Say13yA497H8wSFFXZxh' -d '{"name":"New Group Name","tutorial_id":2,"capacity_adjustment":3,"locked":true}' 'http://localhost:3000/api/units/1/group_sets/2/groups/3'
   ```
 - Response Body:
-=======
-
-  ```bash
-   curl -X PUT --header 'Accept: application/json' --header 'Username: aadmin' --header 'Auth_Token: Say13yA497H8wSFFXZxh' -d '{"name":"New Group Name","tutorial_id":2,"capacity_adjustment":3,"locked":true}' 'http://localhost:3000/api/units/1/group_sets/2/groups/3'
-
-  ```
-
-- Response Body:
-
->>>>>>> 07d8b8ad5447c02473126889dd785e6219e6c300
   ```json
   {
     "id": 3,
@@ -268,7 +196,7 @@ PUT /api/units/{unit_id}/group_sets/{group_set_id}/groups/{group_id}
     "locked": true
   }
   ```
-<<<<<<< HEAD
+---
 
 ### GET:Download a CSV of students in groups within a group set
 
@@ -279,11 +207,11 @@ GET /api/units/{unit_id}/group_sets/{group_set_id}/groups/student_csv
 - Parameter:
 
 | Parameter    | Description          | Parameter Type | Data Type | Mandatory |
-| ------------ | -------------------- | -------------- | --------- | --------- | --- |
+| ------------ | -------------------- | -------------- | --------- | --------- |
 | Username     | Username             | header         | string    | Yes       |
 | Auth_Token   | Authentication token | header         | string    | Yes       |
 | unit_id      | The unit id          | path           | integer   | Yes       |
-| group_set_id | Id of the group set  | path           | integer   | Yes       |     |
+| group_set_id | Id of the group set  | path           | integer   | Yes       |
 
 - Response: `200 OK`
 
@@ -294,12 +222,10 @@ GET /api/units/{unit_id}/group_sets/{group_set_id}/groups/student_csv
   ```
 
 - Response Body:
+  ```
   (Binary CSV file download)
-
+  
   ```
-
-  ```
-
 ---
 
 ### POST: Upload a CSV for students in groups within a group set
@@ -333,7 +259,6 @@ POST /api/units/{unit_id}/group_sets/{group_set_id}/groups/student_csv
   "result": "Success"
 }
 ```
-
 ---
 
 ### GET: Download a CSV of groups within a group set
@@ -360,9 +285,9 @@ GET /api/units/{unit_id}/group_sets/{group_set_id}/groups/csv
   ```
 
 - Response Body:
+  ```
   (Binary CSV file download)
-
-````
+  ````
 ---
 ### POST: Upload a CSV for groups within a group set
 
@@ -386,8 +311,7 @@ POST /api/units/{unit_id}/group_sets/{group_set_id}/groups/csv
 
   ```bash
    curl -X POST \--header 'Accept: application/json' \--header 'Username: aadmin' \--header 'Auth_Token: Say13yA497H8wSFFXZxh' \--form 'file=@/path/to/file.csv' \'http://localhost:3000/api/units/1/group_sets/2/groups/csv'
-````
-
+```
 - Response Body:
 
 ```json
@@ -395,9 +319,7 @@ POST /api/units/{unit_id}/group_sets/{group_set_id}/groups/csv
   "result": "Success"
 }
 ```
-
 ---
-
 ### POST: Add a new group to the group set
 
 POST /api/units/{unit_id}/group_sets/{group_set_id}/groups
@@ -423,8 +345,6 @@ POST /api/units/{unit_id}/group_sets/{group_set_id}/groups
   ```bash
    curl -X POST \--header 'Accept: application/json' \--header 'Username: aadmin' \--header 'Auth_Token: Say13yA497H8wSFFXZxh' \-d '{"name":"Group A","tutorial_id":1,"capacity_adjustment":0}' \'http://localhost:3000/api/units/1/group_sets/2/groups''
   ```
-
-````
 - Response Body:
 
 ```json
@@ -437,6 +357,4 @@ POST /api/units/{unit_id}/group_sets/{group_set_id}/groups
 }
 }
 ```
-````
-=======
->>>>>>> 07d8b8ad5447c02473126889dd785e6219e6c300
+---
