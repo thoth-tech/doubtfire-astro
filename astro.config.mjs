@@ -155,19 +155,11 @@ export default defineConfig({
               link: '/backend/api/error_codes',
             },
             {
-<<<<<<< HEAD
-              label: 'Tutorial Streams',
-              link: '/backend/api/Unit-Tutorial Streams.md',
-            },
-            {
-              label: 'Group sets',
-=======
               label: 'Unit Tutorial Streams',
               link: '/backend/api/unit-tutorial_streams',
             },
             {
               label: 'Unit Group Sets',
->>>>>>> 07d8b8ad5447c02473126889dd785e6219e6c300
               link: '/backend/api/unit-group_sets',
             },
           ],
