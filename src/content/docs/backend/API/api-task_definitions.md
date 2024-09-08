@@ -17,6 +17,9 @@ This "units" API has the following operations.
 - **POST**: /api/units/{unit_id}/task_definitions/{task_def_id}/task_resources
 - **POST**: /api/units/{unit_id}/task_definitions/{task_def_id}/task_sheet
 - **POST**: /api/units/{unit_id}/task_definitions/{task_def_id}/test_overseer_assessment
+- **DELETE**: /api/units/{unit_id}/task_definitions/{task_def_id}/task_assessment_resources
+- **GET**: /api/units/{unit_id}/task_definitions/{task_def_id}/task_assessment_resources
+- **POST**: /api/units/{unit_id}/task_definitions/{task_def_id}/task_assessment_resources
 
 ## Detail of Operations related to units.
 
@@ -266,4 +269,89 @@ POST /units/{unit_id}/task_definitions/{task_def_id}/test_overseer_assessment
   {
     "status": "Overseer assessment performed successfully"
   }
+  ```
+
+### POST: Upload the task assessment resources for a given task
+
+POST /api/units/{unit_id}/task_definitions/{task_def_id}/task_assessment_resources
+
+- URL: `/api/units/{unit_id}/task_definitions/{task_def_id}/task_assessment_resources`
+- Method: `POST`
+- Parameters:
+  | Parameter  | Description                     |Parameter Type| Data Type|Mandatory|
+  |------------|-------------------------------- |--------------|----------|---------|
+  |unit_id     | Unit ID                         | path         | integer  |Yes      |
+  |task_def_id | Task Definition ID              | path         | integer  |Yes      |
+  |Username    | User username                   | header       | string   |Yes      |
+  |Auth_Token  | Authentication token            | header       | string   |Yes      |
+  |file        | Task assessment resources zip   | form-data    | file     |Yes      |
+
+- Response:
+  `201 OK`
+
+- Example Request:
+
+  ```bash
+  curl -X POST --header 'Accept: application/json' --header 'Username: aadmin' --header 'Auth_Token: yzRDggcmzbVnYEbszVV1' -F 'file=@/path/to/resources.zip' 'http://localhost:3000/api/units/1/task_definitions/2/task_assessment_resources'
+  ```
+
+- Response body:
+  ```
+  true
+  ```
+
+### DELETE: Remove the task assessment resources for a given task
+
+DELETE /api/units/{unit_id}/task_definitions/{task_def_id}/task_assessment_resources
+
+- URL: `/api/units/{unit_id}/task_definitions/{task_def_id}/task_assessment_resources`
+- Method: `DELETE`
+- Parameters:
+  | Parameter  | Description          |Parameter Type| Data Type|Mandatory|
+  |------------|----------------------|--------------|----------|---------|
+  |unit_id     | Unit ID              | path         | integer  |Yes      |
+  |task_def_id | Task Definition ID   | path         | integer  |Yes      |
+  |Username    | User username        | header       | string   |Yes      |
+  |Auth_Token  | Authentication token | header       | string   |Yes      |
+
+- Response:
+  `204 OK`
+
+- Example Request:
+
+  ```bash
+  curl -X DELETE --header 'Accept: application/json' --header 'Username: aadmin' --header 'Auth_Token: yzRDggcmzbVnYEbszVV1' 'http://localhost:3000/api/units/1/task_definitions/2/task_assessment_resources'
+  ```
+
+- Response body:
+  ```
+  true
+  ```
+
+### GET: Download the task assessment resources
+
+GET /api/units/{unit_id}/task_definitions/{task_def_id}/task_assessment_resources
+
+- URL: `/api/units/{unit_id}/task_definitions/{task_def_id}/task_assessment_resources`
+- Method: `GET`
+- Parameters:
+  | Parameter  | Description          |Parameter Type| Data Type|Mandatory|
+  |------------|----------------------|--------------|----------|---------|
+  |unit_id     | Unit ID              | path         | integer  |Yes      |
+  |task_def_id | Task Definition ID   | path         | integer  |Yes      |
+  |Username    | User username        | header       | string   |Yes      |
+  |Auth_Token  | Authentication token | header       | string   |Yes      |
+
+- Response:
+  `200 OK`
+
+- Example Request:
+
+  ```bash
+  curl -X GET --header 'Accept: application/octet-stream' --header 'Username: aadmin' --header 'Auth_Token: yzRDggcmzbVnYEbszVV1' 'http://localhost:3000/api/units/1/task_definitions/2/task_assessment_resources'
+  ```
+
+- Response body:
+  ```
+  <binary data of the zip file>
   ```
