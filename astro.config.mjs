@@ -59,8 +59,7 @@ export default defineConfig({
             {
               label: 'activity types',
               link: '/backend/api/activity_types',
-            },
-            
+            },     
             {
               label: 'admin',
               link: '/backend/api/admin',
@@ -140,8 +139,7 @@ export default defineConfig({
             {
               label: 'units (2)',
               link: '/backend/api/units_2',
-            },
-            
+            }
             {
               label: 'users',
               link: '/backend/api/users',
@@ -163,7 +161,6 @@ export default defineConfig({
               link: '/backend/api/unit-group_sets',
             },
           ],
-
         },
         {
           label: 'Team',
