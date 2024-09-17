@@ -139,7 +139,7 @@ export default defineConfig({
             {
               label: 'units (2)',
               link: '/backend/api/units_2',
-            }
+            },
             {
               label: 'users',
               link: '/backend/api/users',
