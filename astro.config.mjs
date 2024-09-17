@@ -160,6 +160,10 @@ export default defineConfig({
               label: 'Unit Group Sets',
               link: '/backend/api/unit-group_sets',
             },
+            {
+              label: 'Units Task Definition',
+              link: '/backend/api/api-task_definitions',
+            },
           ],
         },
         {
