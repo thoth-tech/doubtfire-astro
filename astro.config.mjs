@@ -59,8 +59,7 @@ export default defineConfig({
             {
               label: 'activity types',
               link: '/backend/api/activity_types',
-            },
-            
+            },     
             {
               label: 'admin',
               link: '/backend/api/admin',
@@ -129,7 +128,6 @@ export default defineConfig({
               label: 'unit_roles',
               link: '/backend/api/unit_roles',
             },
-           
             {
               label: 'units API operation list',
               link: '/backend/api/units',
@@ -142,7 +140,6 @@ export default defineConfig({
               label: 'units (2)',
               link: '/backend/api/units_2',
             },
-            
             {
               label: 'users',
               link: '/backend/api/users',
@@ -154,6 +151,14 @@ export default defineConfig({
             {
               label: 'Error codes',
               link: '/backend/api/error_codes',
+            },
+            {
+              label: 'Unit Tutorial Streams',
+              link: '/backend/api/unit-tutorial_streams',
+            },
+            {
+              label: 'Unit Group Sets',
+              link: '/backend/api/unit-group_sets',
             },
             {
               label: 'Units Task Definition',
