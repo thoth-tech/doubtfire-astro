@@ -8,14 +8,14 @@ title: Backend API's
 
 The routes involved with this will be relatively straightforward.
 
-| Endpoint               | Description                                       | Request Body   | Response Body|
-| ---------------------- | --------------------------------------------------| -------------- | -------------|
-| GET /course            | Get all course data                               | None           | Course[]     |
-| GET /course/courseId   | Get a course by id                                | None           | Course       |
-| GET /course/search     | Get courses that partially match the search params| None           | Course[]     |
-| POST /course           | Add a new course.                                 | Course         | Course       |
-| PUT /course/courseId   | Updates an existing course via its id             | Course         | Course       |
-| DELETE /course/courseId| Deletes an existing course via its id             | None           | None         |
+| Endpoint                         | Description                                        | Request Body                    | Response Body|
+| ---------------------------------|----------------------------------------------------|---------------------------------|--------------|
+| GET /course                      | Get all course data                                | None                            | Course[]     |
+| GET /course/courseId/:courseId   | Get a course by id                                 | None                            | Course       |
+| GET /course/search               | Get courses that partially match the search params | None                            | Course[]     |
+| POST /course                     | Add a new course.                                  | Course                          | Course       |
+| PUT /course/courseId/:courseId   | Updates an existing course via its id              | Course                          | Course       |
+| DELETE /course/courseId/:courseId| Deletes an existing course via its id              | None                            | None         |
 
 Technically speaking, a course would likely only have different versions on a per year basis. However, to cater for the possibility that a course of a particular year gets updated, it would be a good idea to keep a history of this. The course map will keep track of a specific entry of a Course which will allow students to load up the correct version of the course (which by extension, will allow loading of the correct course requirements which will also be tied to specific course versions).
 
@@ -27,13 +27,14 @@ Upon entry to the CourseFlow system within OnTrack, the course map associated wi
 
 As such, the backend needs to have the following routes to cater for this:
 
-| Endpoint                     | Description                                       | Request Body   | Response Body|
-| -----------------------------| --------------------------------------------------| -------------- | -------------|
-| GET /coursemap/userId        | Get a user's course map via their userId          | None           | CourseMap    |
-| GET /coursemap/courseId      | Get all course maps via the course id.            | None           | CourseMap[]  |
-| POST /coursemap              | Add a new course map for a user.                  | CourseMap      | CourseMap    |
-| PUT /coursemap/coursemapId   | Updates an existing course map via its id.        | CourseMap      | CourseMap    |
-| DELETE /coursemap/coursemapId| Deletes an existing course map via its id.        | None           | None         |
+| Endpoint                                  | Description                                       | Request Body   | Response Body|
+| ------------------------------------------| --------------------------------------------------| -------------- | -------------|
+| GET /coursemap/userId/:userId             | Get a user's course map via their userId          | None           | CourseMap    |
+| GET /coursemap/courseId/:courseId         | Get all course maps via the course id.            | None           | CourseMap[]  |
+| POST /coursemap                           | Add a new course map for a user.                  | CourseMap      | CourseMap    |
+| PUT /coursemap/courseMapId/:courseMapId   | Updates an existing course map via its id.        | CourseMap      | CourseMap    |
+| DELETE /coursemap/courseMapId/:courseMapId| Deletes an existing course map via its id.        | None           | None         |
+| DELETE /coursemap/userId/:userId          | Deletes all course maps by user ID                | None           | None         |
 
 The options at present involves:
 
