@@ -133,12 +133,8 @@ export default defineConfig({
               link: '/backend/api/units',
             },
             {
-              label: 'units (1)',
-              link: '/backend/api/units_1',
-            },
-            {
-              label: 'units (2)',
-              link: '/backend/api/units_2',
+              label: 'units id',
+              link: '/backend/api/units_id',
             },
             {
               label: 'users',
@@ -163,6 +159,14 @@ export default defineConfig({
             {
               label: 'Units Task Definition',
               link: '/backend/api/api-task_definitions',
+            },
+            {
+              label: 'learning',
+              link: '/backend/api/learning',
+            },
+            {
+              label: 'stats',
+              link: '/backend/api/stats',
             },
           ],
         },
