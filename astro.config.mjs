@@ -174,6 +174,42 @@ export default defineConfig({
           label: 'Team',
           autogenerate: { directory: 'team' },
         },
+        {
+          label: 'Courseflow documentation',
+          autogenerate: {
+            directory: '/courseflow',
+          },
+          items: [
+            {
+              label: 'Courseflow Introduction',
+              link: '/courseflow/requirements',
+            },
+            {
+              label: 'Use Cases',
+              link: '/courseflow/usecase',
+            },
+            {
+              label: 'What is currently done?',
+              link: '/courseflow/current_stage',
+            },
+            {
+              label: 'Planned Features',
+              link: '/courseflow/future',
+            },
+            {
+              label: 'Visualisation',
+              link: '/courseflow/diagrams',
+            },
+            {
+              label: 'Frontend Structure',
+              link: '/courseflow/frontend',
+            },
+            {
+              label: 'Backend APIs',
+              link: '/courseflow/backend',
+            }
+          ],
+        },
       ],
     }),
   ],
