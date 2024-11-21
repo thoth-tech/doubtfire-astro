@@ -83,7 +83,7 @@ Then we should make sure to push this back to GitHub so others can see our progr
 
 ![alt text](image-8.png)
 
-![alt text](image-9.png)
+![alt text](/image-9.png)
 
 Now we need to finish the initial migration-:
 Workflow Summary
