@@ -210,6 +210,15 @@ export default defineConfig({
             }
           ],
         },
+        {
+          label: 'App Attack x OnTrack',
+          items: [
+            {
+              label: 'AppAttack X OnTrack Signed Contract',
+              link: '/penetrationcontract/contract/'
+            }
+          ]
+        },
       ],
     }),
   ],
