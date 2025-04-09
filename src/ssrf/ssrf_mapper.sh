@@ -130,4 +130,3 @@ for endpoint in "${API_ENDPOINTS[@]}"; do
   test_endpoint "$endpoint"  # Test each API endpoint
 done
 echo_and_log "SSRF testing completed. Results saved in $LOG_FILE"
-

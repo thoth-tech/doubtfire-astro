@@ -2114,4 +2114,3 @@ Testing: localhost:4200/api/auth_test?url=http%3A%2F%2Flocalhost%3A4200%2Fapi%2F
 Testing: localhost:4200/api/auth_test?url=http%3A%2F%2Flocalhost%3A4200%2F.env
 Testing: localhost:4200/api/auth_test?url=http%3A%2F%2Flocalhost%3A4200%2F.git
 SSRF testing completed. Results saved in ssrf_test_results.txt
-

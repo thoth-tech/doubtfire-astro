@@ -42,8 +42,9 @@ OnTrack relies on external API calls and webhooks, so SSRF was deemed a critical
 
 1. **Set up the testing environment:**
 
-   - Start an instance of OnTrack.
+   - Start an instance of OnTrack. Doubtfire-web : Branch 8.0.x, Doubtfire-API Branch: Default, Doubtfire-deploy Branch: 9.x
    - Install Burp Suite Community and configure it as the system proxy.
+   - Install jq from [jq GitHub Releases](https://github.com/stedolan/jq/releases).
 
 2. **Script Execution:**
 
@@ -137,4 +138,3 @@ OnTrack relies on external API calls and webhooks, so SSRF was deemed a critical
 ### Long-term
 
 - Conduct regular penetration tests during major releases, including new SSRF payload updates.
-# test
