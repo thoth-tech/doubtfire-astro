@@ -43,6 +43,16 @@ export default defineConfig({
               label: 'Frontend Documentation',
               link: '/frontend/page',
             },
+            {
+              label: 'Frontend Tutor-Times Design',
+              link: '/frontend/tutor-times-design',
+            },
+            {
+              label:'Frontend Tutor-Times Requirements',
+              link: '/frontend/tutor-times-requirements',
+            }
+           
+
           ],
         },
 
