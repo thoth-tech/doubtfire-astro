@@ -35,22 +35,24 @@ This document is for backend developers, technical leads and other stakeholders 
 - Introduce a new table: `tutor_times` to track individual marking sessions.
 - A new column `total_tutor_time` will be added to the `units` table to store the sum of completed tutor sessions.
 
-### 2.2 Schema Definition
+### 2.2 Entity-Relationship Diagram (ERD)
+
+The following ERD illustrates the relationships between `tutor_times`, `unit_roles`, `tasks`, and `units`.
+
+![tutor_times ERD](tutor_times.png)
+
+### 2.3 Schema Definition
 
 #### `tutor_times` Table
 
-| Column             | Type     | Notes                                 |
-| ------------------ | -------- | ------------------------------------- |
-| `id`               | UUID     | Primary key                           |
-| `unit_role_id`     | UUID     | FK to `unit_roles`                    |
-| `task_id`          | UUID     | FK to `tasks`                         |
-| `start_time`       | datetime | Required                              |
-| `end_time`         | datetime | Required when session is `completed`  |
-| `status`           | enum     | Enum: `active`, `paused`, `completed` |
-| `duration_seconds` | integer  | Calculated as `end_time - start_time` |
-| `created_at`       | datetime | Auto-generated                        |
-| `updated_at`       | datetime | Auto-updated                          |
-| `deleted_at`       | datetime | For soft deletion                     |
+| Column         | Type     | Notes                                   |
+| -------------- | -------- | --------------------------------------- |
+| `id`           | bigint   | Primary key                             |
+| `unit_role_id` | bigint   | FK to `unit_roles`                      |
+| `task_id`      | bigint   | FK to `tasks`                           |
+| `block_count`  | integer  | Number of 5-minute blocks (must be ≥ 1) |
+| `created_at`   | datetime | Auto-generated                          |
+| `deleted_at`   | datetime | Nullable; for soft-deletion             |
 
 #### `units` Table (Update)
 
@@ -58,13 +60,13 @@ This document is for backend developers, technical leads and other stakeholders 
 | ------------------ | ------- | ----------------------------------------------------------- |
 | `total_tutor_time` | integer | In seconds, calculated from non-deleted, completed sessions |
 
-### 2.3 Relationships
+### 2.4 Relationships
 
 - `unit_roles.id` → `tutor_times.unit_role_id` (many-to-one)
 - `tasks.id` → `tutor_times.task_id` (many-to-one)
 - `unit_roles` ↔ `units`: Provides unit context for each tutor session
 
-### 2.4 Data Integrity Constraints
+### 2.5 Data Integrity Constraints
 
 - No overlapping `active` sessions for the same `unit_role_id`
 - `end_time` must be greater than `start_time`
@@ -76,21 +78,17 @@ This document is for backend developers, technical leads and other stakeholders 
 
 ### 3.1 Endpoints
 
-| Endpoint                                   | Method | Description                                               |
-| ------------------------------------------ | ------ | --------------------------------------------------------- |
-| `/api/tutor-times/start`                   | POST   | Start a new marking session                               |
-| `/api/tutor-times/:id/pause`               | PUT    | Pause a session                                           |
-| `/api/tutor-times/:id/resume`              | PUT    | Resume a paused session                                   |
-| `/api/tutor-times/:id/complete`            | PUT    | Complete a session and calculate duration                 |
-| `/api/tutor-times/:id`                     | GET    | Retrieve a specific session                               |
-| `/api/tutor-times/unit-role/:unit_role_id` | GET    | Get all sessions for a specific unit role                 |
-| `/api/tutor-times/:id`                     | DELETE | Soft-delete a session (set `deleted_at`)                  |
-| `/api/tutor-times/unit/:unit_id`           | GET    | (Optional) Get all sessions tied to a unit via unit roles |
+| Endpoint                                  | Method   | Description                                                              |
+| ----------------------------------------- | -------- | ------------------------------------------------------------------------ |
+| `/api/tutor-time`                         | `POST`   | Create a new tutor time block entry (e.g., `block_count: 3`).            |
+| `/api/tutor-time/:id`                     | `GET`    | Retrieve a specific time block entry.                                    |
+| `/api/tutor-time/:id`                     | `PUT`    | Update a specific time block entry.                                      |
+| `/api/tutor-time/:id`                     | `DELETE` | Soft-delete a time block using the `deleted_at` field.                   |
+| `/api/tutor-time/unit-role/:unit_role_id` | `GET`    | Retrieve all time block entries for a given unit role.                   |
+| `/api/tutor-time/unit/:unit_id`           | `GET`    | Retrieve all time block entries for a given unit, across all unit roles. |
 
 ### 3.2 Session Lifecycle
 
-- Sessions transition through states:
-  - `active` → `paused` → `resumed` → `completed`
 - Inactivity logic:
   - After 10 minutes of inactivity (as detected by the frontend), a session is automatically paused
 
@@ -113,8 +111,7 @@ This document is for backend developers, technical leads and other stakeholders 
 ### 5.1 Aggregation Logic
 
 - Background job or trigger recalculates `total_tutor_time` in the `units` table whenever:
-  - A session is added, updated, soft-deleted, or restored
-- Only `completed`, non-deleted sessions are considered
+  - A session is added, updated, or soft-deleted
 
 ---
 
@@ -138,7 +135,6 @@ This document is for backend developers, technical leads and other stakeholders 
 ### 7.1 Unit Testing
 
 - Test all API endpoints individually
-- Validate correct transitions: start → pause → resume → complete
 - Ensure correct behavior on inactivity-triggered pauses
 
 ---
@@ -148,11 +144,6 @@ This document is for backend developers, technical leads and other stakeholders 
 ### 8.1 Environment
 
 - Deploy to staging, then production following standard CI/CD pipelines
-
-### 8.2 Rollout Strategy
-
-- Deploy database schema changes with versioning
-- Monitor for incorrect session transitions and timing mismatches post-release
 
 ---
 
