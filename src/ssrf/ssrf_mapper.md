@@ -32,9 +32,10 @@ OnTrack relies on external API calls and webhooks, so SSRF was deemed a critical
 
 ### Tools Required
 
-- Bash / Linux Shell
-- cURL (HTTP request tool)
-- jq (For encoding payloads) from [jq GitHub Releases](https://github.com/stedolan/jq/releases)
+- `Bash` / Linux Shell
+- `cURL` (HTTP request tool)
+- `jq` (For encoding payloads) from [jq GitHub Releases](https://github.com/stedolan/jq/releases)
+- `grep` (response keyword matching)
 - Burp Suite Community Edition (HTTP proxy and repeater)
 - Docker (local environment setup for OnTrack)
 
@@ -44,13 +45,16 @@ OnTrack relies on external API calls and webhooks, so SSRF was deemed a critical
 
    - Start an instance of OnTrack. Doubtfire-web : Branch 8.0.x, Doubtfire-API Branch: Default, Doubtfire-deploy Branch: 9.x
    - Install Burp Suite Community and configure it as the system proxy.
-   - Install jq from [jq GitHub Releases](https://github.com/stedolan/jq/releases).
+   - Install `jq` from [jq GitHub Releases](https://github.com/stedolan/jq/releases).
 
 2. **Script Execution:**
 
    - Run the provided Bash script: `./ssrf_mapper.sh`.
-   - Input the target base URL and port when prompted.
+   - Input the target base URL, port, API endpoints wordlist, SSRF payloads wordlist, and max timeout (in seconds) when prompted.
    - Select the HTTP method (`GET` or `POST`).
+   - Logs are saved as:
+     - Test Results: `ssrf_logs/ssrf_test_results_<timestamp>.md`
+     - Timeouts: `ssrf_logs/slow_endpoints_<timestamp>.md`
 
 3. **Monitor the output:**
 
@@ -87,6 +91,7 @@ OnTrack relies on external API calls and webhooks, so SSRF was deemed a critical
      - `http://169.254.169.254` (AWS metadata IP)
      - Internal IPs and localhost addresses
    - Safe payloads were prioritized to avoid causing disruptions to production systems.
+   - Additional payloads were gotten from `[h0tak88r](https://github.com/h0tak88r/Wordlists/blob/master/vulns/ssrf.txt)`
 
 3. **HTTP Request Automation**
 
@@ -106,13 +111,14 @@ OnTrack relies on external API calls and webhooks, so SSRF was deemed a critical
 
 ## Script Evolution
 
-| Phase                | Changes Introduced                                                              | Reason                                     |
-| -------------------- | ------------------------------------------------------------------------------- | ------------------------------------------ |
-| **Initial Version**  | Simple `curl` requests manually changed per endpoint                            | Manual testing was slow and prone to error |
-| **Second Iteration** | Added looping over multiple parameters automatically                            | Increased coverage without manual edits    |
-| **Third Iteration**  | Introduced multiple payloads and automated response logging                     | Improved detection reliability             |
-| **Fourth Iteration** | Added header manipulation and payload obfuscation attempts                      | Simulated more advanced attacker behavior  |
-| **Final Version**    | Implemented detailed output logging and basic concurrency (background requests) | Enhanced efficiency and audit traceability |
+| Phase                | Changes Introduced                                                                                                                                                                                 | Reason                                     |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| **Initial Version**  | Simple `curl` requests manually changed per endpoint                                                                                                                                               | Manual testing was slow and prone to error |
+| **Second Iteration** | Added looping over multiple parameters automatically                                                                                                                                               | Increased coverage without manual edits    |
+| **Third Iteration**  | Introduced multiple payloads and automated response logging                                                                                                                                        | Improved detection reliability             |
+| **Fourth Iteration** | Added header manipulation and payload obfuscation attempts                                                                                                                                         | Simulated more advanced attacker behavior  |
+| **Fifth Version**    | Implemented detailed output logging and basic concurrency (background requests)                                                                                                                    | Enhanced efficiency and audit traceability |
+| **Final Version**    | Added checks for required tools and user inputs, `--max-time` attribute to requests, compatibility with wordlists. Results are now saved in `.md` format in seperate files and colored in terminal | Enhanced efficiency and audit traceability |
 
 ## Results from Testing
 
