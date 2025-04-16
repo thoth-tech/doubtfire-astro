@@ -29,14 +29,14 @@ cohesive visual identity and navigation structure.
 
 #### 2.2.1 Time Dashboard for Tutors
 
-- ![Tutor-Progress](../../../../assets/tutor-progress.png)
-- ![Filter-By-Units](../../../../assets/units-filteration.png)
+- ![Tutor-Progress](../../../../../public/tutor-progress.png)
+- ![Filter-By-Units](../../../../../public/units-filteration.png)
 
 - The dashboard provides an overview of marking time statistics, including total time spent on a task and time spent per student
 
 #### 2.2.2 Time Stats for Admin
 
-- ![Admin-Stats](../../../../assets/admin-stats.png)
+- ![Admin-Stats](../../../../../public/admin-stats.png)
 
 - The Page displays a list of tutors and their respective marking times on thier respective units.
 
