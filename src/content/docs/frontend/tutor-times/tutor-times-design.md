@@ -27,17 +27,18 @@ cohesive visual identity and navigation structure.
 
 ### 2.2 Wireframes and Mockups
 
-#### 2.2.1 Dashboard
+#### 2.2.1 Time Dashboard for Tutors
 
-- ![Tutor Progress Dashboard](../../../assets/tutor-progress.png)
+- ![Tutor-Progress](../../../../assets/tutor-progress.png)
+- ![Filter-By-Units](../../../../assets/units-filteration.png)
 
 - The dashboard provides an overview of marking time statistics, including total time spent on a task and time spent per student
 
-#### 2.2.2 Tutor Times Page
+#### 2.2.2 Time Stats for Admin
 
-- ![Tutor Times Page](../../../assets/tutor-times-page.png)
+- ![Admin-Stats](../../../../assets/admin-stats.png)
 
-- The Tutor Times Page displays a list of students and their respective marking times. Tutors can resume, stop, or manually input time for each student.
+- The Page displays a list of tutors and their respective marking times on thier respective units.
 
 ### 2.3 Responsive Design
 
@@ -62,17 +63,14 @@ icons for notifications.
 
 ### 2.7 Navigation
 
-The "Tutor Times" feature will be accessible through the main navigation menu within OnTrack. Clear breadcrumbs will guide users through the application.
+The "Marking Time" will be accessible through the main navigation menu within OnTrack. Clear breadcrumbs will guide users through the application.
 
-### 2.8 Forms and Inputs
 
-Input forms will include text fields for manual time input, along with resume and stop buttons for timers. Error handling will include validation and user-friendly error messages.
-
-### 2.9 Notifications
+### 2.8 Notifications
 
 Notifications will be displayed at the top of the dashboard, providing real-time feedback on marking progress and milestones.
 
-### 2.10 User Profiles
+### 2.9 User Profiles
 
 Tutors will have access to their profiles to view personal information and settings.
 
@@ -82,12 +80,11 @@ Tutors will have access to their profiles to view personal information and setti
 
 #### 3.1.1 Tracking Marking Time
 
-1. Tutors log in to OnTrack.
-2. Tutor navigates to the Task Inbox.
-3. Timer auto-starts.
-4. Timer auto-pauses after 12 mins of inactivity.
-5. Tutors can manually resume the timer from tutor-times page.
-6. Tutors can view their aggregated stats on the Analytics page.
+1. Tutor logs into OnTrack.
+2. When a task is opened for marking, the timer auto-starts.
+3. If no activity is detected (no mouse movement, no key presses, no tab visibility, no scroll, no clicks) for 10 minutes, the timer auto-pauses.
+4. When the tutor resumes activity, the timer auto-resumes.
+5. Tutor can view time spent in the Marking Time page.
 
 ### 3.2 Accessibility
 
@@ -96,7 +93,7 @@ Accessibility features will be implemented, including alt text for images, keybo
 ### 3.3 Usability
 
 The UI will prioritize usability, with clear and intuitive interactions, ensuring tutors can
-efficiently manage marking times.
+view their marking time for units and tasks.
 
 ### 3.4 User Feedback
 
@@ -105,22 +102,25 @@ enhancing the feature over time.
 
 ## 4. Interactive Features
 
-### 4.1 Timer/Stopwatch Feature
+### 4.1 Automated Timer/Stopwatch 
 
-- Timers automatically start when a tutor begins marking and pause after 12 minutes of inactivity.
+- **Start**: Automatically when a tutor begins marking a task.
+- **Pause**: Automatically after 10 minutes of inactivity.
+- **Resume**: Automatically when the tutor resumes activity.
 
-- Tutors can manually resume or stop the timer for better control.
+### 4.2 Visualisation Dashboard (`ngx-graph`)
 
-- This ensures accuracy while still allowing tutors to override in edge cases..
+- Tutors see a graph-based layout (using [ngx-graph](https://swimlane.github.io/ngx-graph/) and [ngx-chart](https://github.com/swimlane/ngx-charts )) of marking time broken down by:
+  - Units
+  - Tasks
+  - Time per student
 
-### 4.2 Manual Time Input
+### 4.3 Admin Visibility
 
-- While the system automatically tracks time spent on tasks, tutors have the option to manually input or adjust time entries.
-
-- This feature serves as a fallback in case of technical issues, offline marking activities, or if tutors prefer to log their time retrospectively.
-
-- Manual time entries are clearly labeled and auditable, maintaining transparency and accountability.
-
+- Admins can view marking time statistics for all tutors.
+- Filter by:
+  - Tutor
+  - Unit
 
 
 ### 4.3 Notification System
@@ -198,6 +198,4 @@ This design document provides a comprehensive plan for the frontend implementati
 
 ## 12. Appendices
 
-- Once the UI and UX designs are finalized, links will be provided to the mockups.
-- Once the UML diagrams are finalized, links will be provided to the diagrams.
 - Once the feature is implemented, a link will be provided to the frontend repository.

@@ -37,7 +37,7 @@ title: Tutor-Times Requirements
 
 ### 1.1 Purpose
 
-The purpose of this document is to outline the requirements for the frontend development of the **"Tutor Times"** feature. This feature will enable tutors to track and manage the time spent on providing feedback to students.
+The purpose of this document is to outline the requirements for the frontend development of the **"Tutor Times"** feature. This feature will enable tutors to track the time spent on providing feedback to students.
 
 ### 1.2 Scope
 
@@ -51,26 +51,29 @@ This document is intended for frontend developers and the development team respo
 
 ## 2. Functional Requirements
 
-### 2.1 Tutor's Marking Progress Page
+### 2.1 Marking Time Page
+A dedicated page displays time data for tutors.
+Tutors can view time spent on:
+- Each unit they’re assigned to. 
+- Each task within those units.
 
-- Create a dedicated page/dashboard where tutors can view their marking progress.
-- Display the time spent providing feedback to each student.
+Admins can view all tutors' marking time by task and unit.
 
 ### 2.2 User Interface
 
-- Design an intuitive and user-friendly interface for the Tutor's Marking Progress Page.
+- Design an intuitive and user-friendly interface for the Tutor's Marking Page.
 - Ensure responsive design for various screen sizes and devices.
-- Provide an option for tutors to manually input marking time.
 
 ### 2.3 Timer/Stopwatch Feature
-
-- Implement a timer feature that **automatically starts** when a tutor opens a student's feedback form and **stops** when they navigate away or close it.
-- Tutors should also have the option to **manually control** the timer if needed.
+- The timer automatically starts when a tutor begins marking a task.
+- The timer pauses if the system detects inactivity for more than 10 minutes.
+- Timer automatically resumes once activity is detected again.
 - Ensure accuracy in time tracking and seamless integration with the backend.
 
-### 2.4 Manual Time Input
+### 2.4 Inactivity Detection
+A tutor is considered "inactive" if:
+- There are no mouse movements, keypresses, or scrolling for 10 minutes.
 
-- Allow tutors to manually input marking time for each student in case they forget to start or stop the timer.
 
 ### 2.5 Notification System
 
@@ -82,7 +85,7 @@ This document is intended for frontend developers and the development team respo
 
 ### 3.1 Performance
 
-- Ensure that the Tutor's Marking Progress Page loads quickly.
+- Ensure that the Marking Page loads quickly.
 - Minimize any performance impact on the overall application.
 
 ### 3.2 Usability
@@ -105,28 +108,21 @@ This document is intended for frontend developers and the development team respo
 
 ### 4.1 User Story 1
 
-**As a tutor, I want to see how long I have spent providing feedback to each student.**
+**As a tutor, I want to view visual reports of how much time I’ve spent on each task and unit.**
 
-- Tutors should be able to view the time spent on each student's feedback on the Tutor's Marking Progress Page.
+- Tutors should be able to view the time spent on each task and unit on the Marking Page.
 
 ### 4.2 User Story 2
 
-**As a unit chair, I want to see how long each tutor has spent providing feedback to each student.**
+**As an admin, I want to see how long each tutor has spent providing feedback to each student.**
 
-- Unit chairs should have access to view the total marking time for each tutor on the Tutor's Marking Progress Page.
-
-### 4.3 User Story 3
-
-**As a unit chair, I want to see how long each tutor has spent providing feedback to each task.**
-
-- Unit chairs should be able to see the time spent by each tutor on specific tasks on the Tutor's Marking Progress Page.
+- Admin should have access to view the total marking time for each tutor on the Tutor's Marking Progress Page.
 
 ---
 
 ## 5. Design Mockups
 
-- ![Tutor Times Page](../../../assets/tutor-times-page.png)
-- ![Tutor Progress Dashboard](../../../assets/tutor-progress.png)
+- [Wireframes and Mockups](./tutor-times-design)
 
 
 ---
