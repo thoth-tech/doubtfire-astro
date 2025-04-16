@@ -27,6 +27,10 @@ export default defineConfig({
           },
           items: [
             {
+              label: 'Frontend Documentation',
+              link: '/frontend/page',
+            },
+            {
               label: 'OnTrack Intial Setup Guidance',
               link: '/setup/set',
             },
