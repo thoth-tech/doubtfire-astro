@@ -1,7 +1,6 @@
 ---
-title: Tutor-Times Requirements
+title: Tutor-Times Frontend Requirements
 ---
-
 
 ## Project Overview
 
@@ -12,11 +11,10 @@ title: Tutor-Times Requirements
   - [1.2 Scope](#12-scope)
   - [1.3 Intended Audience](#13-intended-audience)
 - [2. Functional Requirements](#2-functional-requirements)
-  - [2.1 Tutor's Marking Progress Page](#21-tutors-marking-progress-page)
-  - [2.2 User Interface](#22-user-interface)
-  - [2.3 Timer/Stopwatch Feature](#23-timerstopwatch-feature)
-  - [2.4 Manual Time Input](#24-manual-time-input)
-  - [2.5 Notification System](#25-notification-system)
+  - [2.1 Tutor Session View](#21-tutor-session-view)
+  - [2.2 Admin Analytics Dashboard](#22-admin-analytics-dashboard)
+  - [2.3 API Integration](#23-api-integration)
+  - [2.4 UI Requirements](#24-ui-requirements)
 - [3. Non-Functional Requirements](#3-non-functional-requirements)
   - [3.1 Performance](#31-performance)
   - [3.2 Usability](#32-usability)
@@ -25,11 +23,10 @@ title: Tutor-Times Requirements
 - [4. User Stories](#4-user-stories)
   - [4.1 User Story 1](#41-user-story-1)
   - [4.2 User Story 2](#42-user-story-2)
-  - [4.3 User Story 3](#43-user-story-3)
-- [5. Design Mockups](#5-design-mockups)
-- [6. Testing Requirements](#6-testing-requirements)
-  - [6.1 Unit Testing](#61-unit-testing)
-  - [6.2 User Acceptance Testing](#62-user-acceptance-testing)
+- [5. Testing Requirements](#5-testing-requirements)
+  - [5.1 Component Testing](#51-component-testing)
+  - [5.2 Access Control Testing](#52-access-control-testing)
+  - [5.3 API Integration Testing](#53-api-integration-testing)
 
 ---
 
@@ -37,70 +34,63 @@ title: Tutor-Times Requirements
 
 ### 1.1 Purpose
 
-The purpose of this document is to outline the requirements for the frontend development of the **"Tutor Times"** feature. This feature will enable tutors to track the time spent on providing feedback to students.
+The purpose of this document is to outline the frontend requirements for the **"Tutor Times"** feature. This feature will allow tutors and admins to access marking session data, monitor progress, and generate reports via the frontend interface.
 
 ### 1.2 Scope
 
-The scope of this document covers the functional and non-functional requirements for the frontend implementation of the **"Tutor Times"** feature.
+This document covers the functional and non-functional requirements for the frontend design, including interaction with the backend API for data retrieval. It focuses on the tutor session view and admin analytics dashboard.
 
 ### 1.3 Intended Audience
 
-This document is intended for frontend developers and the development team responsible for implementing the **"Tutor Times"** feature.
+This document is intended for frontend developers, designers, and stakeholders responsible for implementing and reviewing the **"Tutor Times"** frontend feature.
 
 ---
 
 ## 2. Functional Requirements
 
-### 2.1 Marking Time Page
-A dedicated page displays time data for tutors.
-Tutors can view time spent on:
-- Each unit they’re assigned to. 
-- Each task within those units.
+### 2.1 Tutor Session View
+- Display a list of recent marking sessions for the logged-in tutor.
+- Show:
+  - Session start and end times
+  - Duration of each session
+  - Associated unit and project
 
-Admins can view all tutors' marking time by task and unit.
+### 2.2 Admin Analytics Dashboard
+- Allow admins to:
+  - View marking sessions of all tutors
+  - Filter sessions by tutor, unit, project, or date range
+  - See aggregate marking time statistics
 
-### 2.2 User Interface
+### 2.3 API Integration
+- Integrate with existing backend APIs to retrieve session data for tutors and admins.
+- API endpoints must be called securely and reliably to fetch marking time records.
+- Ensure data is displayed in real-time or as close to real-time as possible.
 
-- Design an intuitive and user-friendly interface for the Tutor's Marking Page.
-- Ensure responsive design for various screen sizes and devices.
-
-### 2.3 Timer/Stopwatch Feature
-- The timer automatically starts when a tutor begins marking a task.
-- The timer pauses if the system detects inactivity for more than 10 minutes.
-- Timer automatically resumes once activity is detected again.
-- Ensure accuracy in time tracking and seamless integration with the backend.
-
-### 2.4 Inactivity Detection
-A tutor is considered "inactive" if:
-- There are no mouse movements, keypresses, or scrolling for 10 minutes.
-
-
-### 2.5 Notification System
-
-- Implement a notification system to alert tutors when they reach specific time milestones (e.g., every 5 minutes or at a configurable threshold).
+### 2.4 UI Requirements
+- Create a user-friendly, intuitive interface for both the Tutor Session View and Admin Analytics Dashboard.
+- Design responsive layouts to ensure functionality on different screen sizes (desktop, tablet, mobile).
+- Use charts, tables, and filters to present data clearly.
+- Include pagination and sorting features where applicable.
 
 ---
 
 ## 3. Non-Functional Requirements
 
 ### 3.1 Performance
-
-- Ensure that the Marking Page loads quickly.
-- Minimize any performance impact on the overall application.
+- Pages displaying session data should load within 300ms.
+- Ensure smooth interactions and updates even with large datasets.
 
 ### 3.2 Usability
-
-- The user interface should be intuitive and easy to use for tutors.
-- Ensure that the feature is accessible to all users.
+- The user interface should be easy to use and visually clear for both tutors and admins.
+- Ensure accessibility and user-friendly design for diverse audiences.
 
 ### 3.3 Compatibility
-
-- Ensure compatibility with modern web browsers (e.g., Chrome, Firefox, Safari).
-- Verify cross-browser compatibility and address any compatibility issues.
+- Ensure compatibility with modern web browsers such as Chrome, Firefox, Safari, and Edge.
+- Make sure the frontend is fully functional across desktop and mobile browsers.
 
 ### 3.4 Security
-
-- Implement necessary security measures to protect user data and prevent unauthorized access to marking time records.
+- Secure the session data with appropriate authentication and authorization mechanisms.
+- Implement role-based access control (RBAC) to ensure that only authorized users can view specific data.
 
 ---
 
@@ -108,31 +98,28 @@ A tutor is considered "inactive" if:
 
 ### 4.1 User Story 1
 
-**As a tutor, I want to view visual reports of how much time I’ve spent on each task and unit.**
+**As a tutor, I want to view a list of my marking sessions, so I can track the time spent on each task and unit.**
 
-- Tutors should be able to view the time spent on each task and unit on the Marking Page.
+- Tutors should be able to view their marking session details, including start/end times and total duration, for each task and unit.
 
 ### 4.2 User Story 2
 
-**As an admin, I want to see how long each tutor has spent providing feedback to each student.**
+**As an admin, I want to access data from all tutors’ marking sessions, so I can generate aggregate reports and analyze workload.**
 
-- Admin should have access to view the total marking time for each tutor on the Tutor's Marking Progress Page.
-
----
-
-## 5. Design Mockups
-
-- [Wireframes and Mockups](./tutor-times-design)
-
+- Admins should be able to view marking sessions for all tutors, filter by unit, task, and time, and view aggregated statistics.
 
 ---
 
-## 6. Testing Requirements
+## 5. Testing Requirements
 
-### 6.1 Unit Testing
+### 5.1 Component Testing
+- Verify the correct rendering of session data, including the start/end time, duration, and associated unit/project.
+- Test interactive elements like filters and pagination for functionality.
 
-- Develop unit tests to ensure the correctness and reliability of frontend components, including timers, manual input, and notifications.
+### 5.2 Access Control Testing
+- Test that tutors can only see their own session data and not access other tutors' data.
+- Admins should be able to access data for all tutors, but only if they have the necessary permissions.
 
-### 6.2 User Acceptance Testing
-
-- Conduct user acceptance testing to verify that the **"Tutor Times"** feature meets the requirements and user expectations.
+### 5.3 API Integration Testing
+- Ensure that the frontend correctly fetches and displays data from the backend API.
+- Test that the frontend handles potential errors (e.g., server downtime, data loading issues) gracefully.
