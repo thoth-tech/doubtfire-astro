@@ -5,15 +5,11 @@ This document outlines the changes made to address a malicious code execution vu
 
 ## Changes Implemented
 
-### 1. Update PDF.js Library
-- The vulnerability stemmed from outdated handling of font data in PDF.js.
-- **Action Taken:** Upgraded PDF.js to the latest secure version to ensure the library includes all recent security patches.
-
-### 2. Sanitize Uploaded PDFs
+### 1. Sanitize Uploaded PDFs
 - Implemented server-side scanning for malicious JavaScript embedded in PDFs.
 - **Action Taken:** Added a validation step during PDF uploads to detect and reject files containing embedded JavaScript or other malicious content.
 
-### 3. Restrict or Disable JavaScript Execution in PDF Viewers
+### 2. Restrict or Disable JavaScript Execution in PDF Viewers
 - JavaScript execution in PDFs is no longer required for the application.
 - **Action Taken:** Configured the PDF viewer to disable JavaScript execution entirely, ensuring that no embedded scripts can run.
 
