@@ -1,0 +1,152 @@
+[0;34m===== Broken Access Control Test =====[0m
+[0;34mExpected result: All unauthorized access attempts should be denied[0m
+
+[0;34mObtaining authentication tokens for testing...[0m
+[0;34mTest 1: Vertical Privilege Escalation[0m
+[Vertical Privilege Escalation: Regular user creating unit] - [0;32mPASS: Access denied as expected (Status: 403)[0m
+Response: {"error":"Not authorised to create a unit"}
+
+[Vertical Privilege Escalation: Regular user accessing admin dashboard] - [0;32mPASS: Access denied as expected (Status: 403)[0m
+Response: {"error":"Unable to list units"}
+
+
+[0;34mTest 2: Insecure Direct Object References (IDOR)[0m
+[IDOR: Accessing another user's data by ID] - [0;31mFAIL: Access was allowed but should have been denied (Status: 200)[0m
+Response: {"id":2,"student_id":"11111111","email":"student_1@doubtfire.com","first_name":"First Name","last_name":"Surname","username":"student_1","nickname":"Nickname","receive_task_notifications":true,"receive_portfolio_notifications":true,"receive_feedback_notifications":true,"opt_in_to_research":false,"has_run_first_time_setup":true,"system_role":"Student"}
+
+[IDOR: Accessing unauthorized unit data] - [0;32mPASS: Access denied as expected (Status: 403)[0m
+Response: {"error":"Couldn't find Unit with id=1"}
+
+
+[0;34mTest 3: Session Token Misuse[0m
+[Session Token Misuse: Regular user with admin token] - [0;32mPASS: Access denied as expected (Status: 419)[0m
+Response: {"error":"No authentication details provided. Authentication is required to access this resource."}
+
+[Session Token Misuse: Admin user with regular token] - [0;32mPASS: Access denied as expected (Status: 419)[0m
+Response: {"error":"No authentication details provided. Authentication is required to access this resource."}
+
+
+[0;34mTest 4: URL Manipulation[0m
+[URL Manipulation: Using admin=true parameter] - [0;32mPASS: Access denied as expected (Status: 403)[0m
+Response: {"error":"Unable to list units"}
+
+[URL Manipulation: API path traversal attempt] - [0;33mATTENTION REQUIRED: Path traversal test returned 404[0m
+Response: 404 Not Found
+
+[URL Manipulation: API path traversal attempt] - [0;33mNOTE: While the server returned 404, manual verification is recommended[0m
+Check if admin resources are accessible through other means
+
+[0;33mManually check if regular users can access /#/admin/units[0m
+[UI Access Control] - [0;33mMANUAL CHECK NEEDED: Verify if students can access admin pages[0m
+Check if regular users can access: /#/admin/units
+
+
+[0;34mTest 5: Missing Access Controls[0m
+[Missing Access Control: No auth on /api/activity_types] - [0;33mINCONCLUSIVE: Endpoint returns empty result (Status: 200)[0m
+Response: []
+
+[Missing Access Control: No auth on /api/activity_types] - [0;33mNOTE: Although no actual data is returned, the endpoint can be accessed without authentication[0m
+Consider requiring authentication based on the security requirements
+
+[Missing Access Control (/api/admin)] - [0;33mSKIPPED: Endpoint not found (404)[0m
+Response: 404 Not Found
+
+[Missing Access Control: No auth on /api/auth] - [0;32mPASS: Access denied as expected (Status: 405 - Method Not Allowed)[0m
+Response: {"error":"405 Not Allowed"}
+
+[Missing Access Control: No auth on /api/campuses] - [0;33mINCONCLUSIVE: Endpoint returns empty result (Status: 200)[0m
+Response: []
+
+[Missing Access Control: No auth on /api/campuses] - [0;33mNOTE: Although no actual data is returned, the endpoint can be accessed without authentication[0m
+Consider requiring authentication based on the security requirements
+
+[Missing Access Control (/api/csv)] - [0;33mSKIPPED: Endpoint not found (404)[0m
+Response: 404 Not Found
+
+[Missing Access Control: No auth on /api/projects] - [0;32mPASS: Access denied as expected (Status: 419)[0m
+Response: {"error":"No authentication details provided. Authentication is required to access this resource."}
+
+[Missing Access Control: No auth on /api/settings] - [0;31mFAIL: Access was allowed but should have been denied (Status: 200)[0m
+Response: {"externalName":"OnTrack","overseerEnabled":false,"tiiEnabled":false,"d2lEnabled":false}
+
+[Missing Access Control: No auth on /api/students] - [0;32mPASS: Access denied as expected (Status: 419)[0m
+Response: {"error":"No authentication details provided. Authentication is required to access this resource."}
+
+[Missing Access Control (/api/submission)] - [0;33mSKIPPED: Endpoint not found (404)[0m
+Response: 404 Not Found
+
+[Missing Access Control: No auth on /api/tasks] - [0;32mPASS: Access denied as expected (Status: 419)[0m
+Response: {"error":"No authentication details provided. Authentication is required to access this resource."}
+
+[Missing Access Control: No auth on /api/teaching_periods] - [0;33mINCONCLUSIVE: Endpoint returns empty result (Status: 200)[0m
+Response: []
+
+[Missing Access Control: No auth on /api/teaching_periods] - [0;33mNOTE: Although no actual data is returned, the endpoint can be accessed without authentication[0m
+Consider requiring authentication based on the security requirements
+
+[Missing Access Control: No auth on /api/tii_actions] - [0;32mPASS: Access denied as expected (Status: 419)[0m
+Response: {"error":"No authentication details provided. Authentication is required to access this resource."}
+
+[Missing Access Control: No auth on /api/tii_eula] - [0;33mINCONCLUSIVE: Endpoint returns empty result (Status: 200)[0m
+Response: null
+
+[Missing Access Control: No auth on /api/tii_eula] - [0;33mNOTE: Although no actual data is returned, the endpoint can be accessed without authentication[0m
+Consider requiring authentication based on the security requirements
+
+[Missing Access Control: No auth on /api/tii_hook] - [0;32mPASS: Access denied as expected (Status: 405 - Method Not Allowed)[0m
+Response: {"error":"405 Not Allowed"}
+
+[Missing Access Control: No auth on /api/tutorials] - [0;32mPASS: Access denied as expected (Status: 419)[0m
+Response: {"error":"No authentication details provided. Authentication is required to access this resource."}
+
+[Missing Access Control: No auth on /api/unit_roles] - [0;32mPASS: Access denied as expected (Status: 419)[0m
+Response: {"error":"No authentication details provided. Authentication is required to access this resource."}
+
+[Missing Access Control: No auth on /api/units] - [0;32mPASS: Access denied as expected (Status: 419)[0m
+Response: {"error":"No authentication details provided. Authentication is required to access this resource."}
+
+[Missing Access Control: No auth on /api/users] - [0;32mPASS: Access denied as expected (Status: 419)[0m
+Response: {"error":"No authentication details provided. Authentication is required to access this resource."}
+
+[Missing Access Control (/api/webcals)] - [0;33mSKIPPED: Endpoint not found (404)[0m
+Response: 404 Not Found
+
+
+[0;34mTest 6: HTTP Method Manipulation[0m
+[HTTP Method Manipulation: PUT on GET endpoint] - [0;32mPASS: Access denied as expected (Status: 405 - Method Not Allowed)[0m
+Response: {"error":"405 Not Allowed"}
+
+[HTTP Method Manipulation: DELETE on GET endpoint] - [0;32mPASS: Access denied as expected (Status: 405 - Method Not Allowed)[0m
+Response: {"error":"405 Not Allowed"}
+
+
+[0;34mTest 7: Function Level Access Controls[0m
+[Function Level Access Control: Create teaching period] - [0;33mINCONCLUSIVE: Request was processed but failed validation (Status: 400)[0m
+Response: {"error":"teaching_period[period] is missing, teaching_period[year] is missing, teaching_period[active_until] is missing"}
+
+[Function Level Access Control: Create teaching period] - [0;33mNOTE: The API is accepting the request but rejecting it due to missing parameters[0m
+This suggests the endpoint might lack proper permission checks, but further testing is needed
+
+
+[0;34mControl Test: Verify Proper Access[0m
+[Control Test: Admin accessing permitted resources] - [0;32mPASS: Access allowed as expected (Status: 200)[0m
+Response: [{"code":"test1","id":1,"name":"test1","my_role":"Convenor","main_convenor_user_id":1,"description":"test1","start_date":"1234-11-10","end_date":"2222-11-10","active":true},{"code":"test 2","id":2,"name":"test2","my_role":"Convenor","main_convenor_user_id":1,"description":"test2","start_date":"2025-05-05","end_date":"2025-08-25","active":true},{"code":"test 3","id":3,"name":"test3","my_role":"Convenor","main_convenor_user_id":1,"description":"test3","start_date":"2025-05-05","end_date":"2025-08-25","active":true},{"code":"test 4","id":122,"name":"test4","my_role":"Convenor","main_convenor_user_id":1,"description":"test4","start_date":"2025-03-02","end_date":"2025-06-22","active":true}]
+
+[Control Test: Regular user accessing permitted resources] - [0;33mINCONCLUSIVE: Regular user may not have units assigned[0m
+Response: {"error":"Unable to list units"}
+
+[Control Test: Regular user accessing permitted resources] - [0;33mNOTE: The 403 response might be legitimate if the user doesn't have any assigned units[0m
+This is expected behavior if the user's role doesn't include any units
+
+
+[0;34m===== Test Summary =====[0m
+[0;34mTests completed at Thu  1 May 2025 20:49:45 AEST[0m
+[0;34mLog file saved to: [0mbroken_access_control_test_20250501_204935.log
+
+[0;32mTests Passed: 19[0m
+[0;31mTests Failed: 2[0m
+[0;33mTests Skipped/Inconclusive: 11[0m
+
+[0;31mWARNING: Potential broken access control vulnerabilities detected.[0m
+[0;31mReview the log file for details on the failed tests.[0m
+[0;31mThese issues may allow unauthorized access to restricted resources.[0m
