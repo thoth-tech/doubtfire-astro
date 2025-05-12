@@ -1,11 +1,49 @@
 #!/bin/bash
 # Broken Access Control Test Script
 # Purpose: Test for broken access control vulnerabilities in web applications
-# This script simulates unauthorized access attempts to restricted resources and confirms they are denied
+# Usage: ./broken_access_control_test.sh [API_URL]
 
+# Ensure script continues after command failures
 set +e
 
-API_URL="http://localhost:3000"
+# Import API URL
+if command -v node &> /dev/null; then
+  # Look for API URL in common locations
+  for path in \
+    "./src/app/config/constants/apiURL.ts" \
+    "./app/config/constants/apiURL.ts" \
+    "../doubtfire-web/src/app/config/constants/apiURL.ts"
+  do
+    if [ -f "$path" ]; then
+      # Extract API_URL from TypeScript file
+      API_URL=$(grep -o "API_URL\s*=\s*[\"'][^\"']*[\"']" "$path" | head -1 | cut -d "'" -f2 | cut -d '"' -f2)
+      if [ ! -z "$API_URL" ]; then
+        break
+      fi
+    fi
+  done
+fi
+
+# Allow overriding through parameter
+if [ "$1" != "" ]; then
+  API_URL="$1"
+fi
+
+# Default if not set
+if [ -z "$API_URL" ]; then
+  API_URL="http://localhost:3000"
+fi
+
+echo "Using API URL: $API_URL"
+
+# Client URL is typically different from API URL
+CLIENT_URL=${API_URL/3000/4200}
+if [[ "$CLIENT_URL" == "$API_URL" ]]; then
+  # If no port substitution happened, use a different port
+  CLIENT_URL="http://localhost:4200"
+fi
+
+
 LOG_FILE="broken_access_control_test_$(date +%Y%m%d_%H%M%S).log"
 
 # User credentials for testing
@@ -337,31 +375,44 @@ log_result "UI Access Control" "${YELLOW}MANUAL CHECK NEEDED: Verify if students
 echo -e "\n${BLUE}Test 5: Missing Access Controls${NC}" | tee -a "$LOG_FILE"
 echo -e "${BLUE}Testing if critical endpoints are missing access controls${NC}\n"
 
-# Define a list of potentially sensitive endpoints based on full API list
-declare -a SENSITIVE_ENDPOINTS=(
-  "/api/activity_types"
-  "/api/admin"
-  "/api/auth"
-  "/api/auth_test"
-  "/api/campuses"
-  "/api/csv"
-  "/api/projects"
-  "/api/settings"
-  "/api/students"
-  "/api/submission"
-  "/api/tasks"
-  "/api/teaching_periods"
-  "/api/tii_actions"
-  "/api/tii_eula"
-  "/api/tii_hook"
-  "/api/tutorials"
-  "/api/unit_roles"
-  "/api/units"
-  "/api/users"
-  "/api/webcals"
-)
+# Use existing API endpoints file or create a minimal one
+ENDPOINTS_FILE="./api_endpoints.txt"
+if [ ! -f "$ENDPOINTS_FILE" ]; then
+  echo -e "${YELLOW}API endpoints file not found. Creating a minimal list for testing...${NC}"
+
+  cat > "$ENDPOINTS_FILE" << EOF
+# Basic API endpoints for testing
+/api/settings
+/api/users
+/api/units
+EOF
+fi
 
 echo -e "${YELLOW}Test 5.1: Testing access to sensitive endpoints without proper authentication...${NC}"
+
+# Read endpoints directly from file, skipping comments and empty lines
+while IFS= read -r line || [ -n "$line" ]; do
+  # Skip empty lines and comments
+  [[ -z "$line" || "$line" == \#* ]] && continue
+
+  endpoint="$line"
+
+  # Test without authentication
+  NO_AUTH_RESULT=$(curl -s -X GET "${API_URL}${endpoint}" \
+    -w "\n%{http_code}" 2>&1)
+
+  NO_AUTH_STATUS=$(echo "$NO_AUTH_RESULT" | tail -n1)
+  NO_AUTH_BODY=$(echo "$NO_AUTH_RESULT" | sed '$d')
+
+  # Skip endpoints that don't exist
+  if [[ $NO_AUTH_STATUS == 404 ]]; then
+    log_result "Missing Access Control (${endpoint})" "${YELLOW}SKIPPED: Endpoint not found (404)${NC}" "Response: $NO_AUTH_BODY"
+    ((TESTS_SKIPPED++))
+    continue
+  fi
+
+  check_denial "$NO_AUTH_STATUS" true "$NO_AUTH_BODY" "Missing Access Control: No auth on ${endpoint}" "missing_access"
+done < "$ENDPOINTS_FILE"
 
 for endpoint in "${SENSITIVE_ENDPOINTS[@]}"; do
   # Test with no authentication
