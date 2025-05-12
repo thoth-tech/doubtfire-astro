@@ -2,20 +2,74 @@
 # Improved SQL Injection Security Test Script
 # This script tests the application's resistance to SQL injection attacks
 
-# Configuration
-API_URL="http://localhost:3000"  # Rails API URL
-CLIENT_URL="http://localhost:4200"  # Web client URL
-CLIENT_LOGIN_PAGE="${CLIENT_URL}/#/sign_in"  # Client login page
-TARGET_URL="${API_URL}/api/auth"  # Login API endpoint to test
-USERNAME_FIELD="username"
-PASSWORD_FIELD="password"
-NIKTO_TARGET="$API_URL"  # Root URL for scanning
+# Load configuration from config file if it exists
+CONFIG_FILE="./sql_injection_config.sh"
+if [ -f "$CONFIG_FILE" ]; then
+  # Source the config file to get custom configuration
+  source "$CONFIG_FILE"
+  printf "Loaded configuration from $CONFIG_FILE\n"
+fi
 
-# Real credentials (for validation tests)
-ADMIN_USERNAME="aadmin"
-ADMIN_PASSWORD="password"
-STUDENT_USERNAME="student_1"
-STUDENT_PASSWORD="password"
+# Set variables with config file values or defaults
+API_URL="${API_URL:-http://localhost:3000}"
+CLIENT_URL="${CLIENT_URL:-http://localhost:4200}"
+USERNAME_FIELD="${USERNAME_FIELD:-username}"
+PASSWORD_FIELD="${PASSWORD_FIELD:-password}"
+STUDENT_USERNAME="${STUDENT_USERNAME:-student_1}"
+STUDENT_PASSWORD="${STUDENT_PASSWORD:-password}"
+ADMIN_USERNAME="${ADMIN_USERNAME:-aadmin}"
+ADMIN_PASSWORD="${ADMIN_PASSWORD:-password}"
+
+# Derive dependent URLs
+CLIENT_LOGIN_PAGE="${CLIENT_URL}/#/sign_in"
+TARGET_URL="${API_URL}/api/auth"
+NIKTO_TARGET="$API_URL"
+
+# Script usage function
+show_usage() {
+  printf "Usage: $0 [options]\n"
+  printf "Options:\n"
+  printf "  -a URL   Set API URL (default: http://localhost:3000)\n"
+  printf "  -c URL   Set client URL (default: http://localhost:4200)\n"
+  printf "  -u USER  Set student username for testing (default: student_1)\n"
+  printf "  -p PASS  Set student password for testing (default: password)\n"
+  printf "  -h       Show this help message\n"
+  printf "\nYou can also create a config file named 'sql_injection_config.sh' with values for API_URL, CLIENT_URL, etc.\n"
+  exit 1
+}
+
+# Parse command line options (these override both defaults and config file)
+while getopts "a:c:u:p:h" opt; do
+  case ${opt} in
+    a )
+      API_URL=$OPTARG
+      NIKTO_TARGET=$OPTARG
+      TARGET_URL="${API_URL}/api/auth"
+      ;;
+    c )
+      CLIENT_URL=$OPTARG
+      CLIENT_LOGIN_PAGE="${CLIENT_URL}/#/sign_in"
+      ;;
+    u )
+      STUDENT_USERNAME=$OPTARG
+      ;;
+    p )
+      STUDENT_PASSWORD=$OPTARG
+      ;;
+    h )
+      show_usage
+      ;;
+    \? )
+      show_usage
+      ;;
+  esac
+done
+
+# Display configuration
+printf "Using configuration:\n"
+printf "  API URL: $API_URL\n"
+printf "  Client URL: $CLIENT_URL\n"
+printf "  Target endpoint: $TARGET_URL\n"
 
 # Colors for output - we'll use these without echo -e to avoid the -e in output
 GREEN='\033[0;32m'
@@ -44,7 +98,7 @@ printf "\n${BLUE}===== Verifying Legitimate Credentials =====${NC}\n"
 printf "${BLUE}Testing valid login with student credentials${NC}\n"
 
 # Add timeout and hardcode the URL to avoid parsing issues
-VALID_LOGIN_RESULT=$(curl -s --connect-timeout 10 -X POST "http://localhost:3000/api/auth" \
+VALID_LOGIN_RESULT=$(curl -s --connect-timeout 10 -X POST "$TARGET_URL" \
   -H "Content-Type: application/json" \
   -d "{\"username\":\"$STUDENT_USERNAME\", \"password\":\"$STUDENT_PASSWORD\"}" \
   -w "\n%{http_code}" 2>&1)
@@ -52,19 +106,25 @@ VALID_LOGIN_RESULT=$(curl -s --connect-timeout 10 -X POST "http://localhost:3000
 VALID_LOGIN_STATUS=$(echo "$VALID_LOGIN_RESULT" | tail -n1)
 VALID_LOGIN_BODY=$(echo "$VALID_LOGIN_RESULT" | sed '$d')
 
-if [[ ("$VALID_LOGIN_STATUS" == "200" || "$VALID_LOGIN_STATUS" == "201") && 
-      ("$VALID_LOGIN_BODY" == *"auth_token"* || "$VALID_LOGIN_BODY" == *"user"*) ]]; then
+printf "${BLUE}Connection details:${NC}\n"
+echo "$VALID_LOGIN_RESULT" | grep -E "Connected to|Connection refused|Failed to connect" || echo "No connection details found"
+
+if [[ "$VALID_LOGIN_STATUS" == "200" || "$VALID_LOGIN_STATUS" == "201" ]] && [[ "$VALID_LOGIN_BODY" == *"auth_token"* || "$VALID_LOGIN_BODY" == *"user"* ]]; then
   printf "${GREEN}✓ Valid credentials work correctly${NC}\n"
-  printf "${GREEN}  Received user information or authentication token.${NC}\n"
+  if [[ "$VALID_LOGIN_BODY" == *"auth_token"* ]]; then
+    printf "${GREEN}  Received authentication token.${NC}\n"
+  elif [[ "$VALID_LOGIN_BODY" == *"user"* ]]; then
+    printf "${GREEN}  Received user data.${NC}\n"
+  fi
   VALID_LOGIN_TEST="PASSED"
 else
   printf "${RED}✗ Valid credentials test failed. Check if the API is running correctly.${NC}\n"
   printf "${YELLOW}  Status: $VALID_LOGIN_STATUS${NC}\n"
   printf "${YELLOW}  Response snippet: ${VALID_LOGIN_BODY:0:100}${NC}\n"
-  printf "${YELLOW}  Try manually checking if the API is running with: curl http://localhost:3000/api/auth${NC}\n"
+  printf "${YELLOW}  Try manually checking if the API is running with: curl $TARGET_URL${NC}\n"
   VALID_LOGIN_TEST="FAILED"
   printf "${YELLOW}WARNING: The SQL injection tests may not be reliable if valid login doesn't work.${NC}\n"
-  
+
   # Ask if user wants to continue despite the failed credentials test
   printf "${BLUE}Do you want to continue with SQL injection tests anyway? (y/n)${NC}\n"
   read -r continue_choice
@@ -81,9 +141,9 @@ test_payload() {
   local payload=$1
   local field=$2
   local endpoint=$3
-  
+
   printf "${BLUE}Testing payload: ${payload} in ${field} field${NC}\n"
-  
+
   local response
   if [ "$field" == "$USERNAME_FIELD" ]; then
     response=$(curl -s --connect-timeout 5 -X POST "$endpoint" \
@@ -96,12 +156,12 @@ test_payload() {
       -d "{\"$USERNAME_FIELD\":\"$STUDENT_USERNAME\", \"$PASSWORD_FIELD\":\"${payload}\"}" \
       -w "\n%{http_code}" 2>&1)
   fi
-  
+
   local status_code=$(echo "$response" | tail -n1)
   local body=$(echo "$response" | sed '$d')
-  
+
   printf "${BLUE}Status code: ${status_code}${NC}\n"
-  
+
   if [[ "$status_code" == "200" && "$body" == *"success"* || "$body" == *"token"* || "$body" == *"welcome"* ]]; then
     printf "${RED}✗ VULNERABILITY DETECTED: Injection may have succeeded!${NC}\n"
     printf "${RED}   Response indicates successful login or data retrieval.${NC}\n"
@@ -126,9 +186,9 @@ username_failed=0
 username_inconclusive=0
 
 for payload in "${PAYLOADS[@]}"; do
-  test_payload "$payload" "$USERNAME_FIELD" "http://localhost:3000/api/auth"
+  test_payload "$payload" "$USERNAME_FIELD" "$TARGET_URL"
   test_result=$?
-  
+
   if [ $test_result -eq 0 ]; then
     ((username_passed++))
   elif [ $test_result -eq 1 ]; then
@@ -136,7 +196,7 @@ for payload in "${PAYLOADS[@]}"; do
   else
     ((username_inconclusive++))
   fi
-  
+
   printf "${BLUE}----------------------------------------${NC}\n\n"
 done
 
@@ -147,9 +207,9 @@ password_failed=0
 password_inconclusive=0
 
 for payload in "${PAYLOADS[@]}"; do
-  test_payload "$payload" "$PASSWORD_FIELD" "http://localhost:3000/api/auth"
+  test_payload "$payload" "$PASSWORD_FIELD" "$TARGET_URL"
   test_result=$?
-  
+
   if [ $test_result -eq 0 ]; then
     ((password_passed++))
   elif [ $test_result -eq 1 ]; then
@@ -157,11 +217,9 @@ for payload in "${PAYLOADS[@]}"; do
   else
     ((password_inconclusive++))
   fi
-  
+
   printf "${BLUE}----------------------------------------${NC}\n\n"
 done
-
-# Search endpoint test section removed as the application doesn't have a search endpoint
 
 printf "\n${BLUE}===== Running Nikto Scan for Input Validation Issues =====${NC}\n"
 printf "${BLUE}This may take a few minutes...${NC}\n"
@@ -169,7 +227,7 @@ if command -v nikto &> /dev/null; then
   printf "${BLUE}Starting Nikto scan...${NC}\n"
   nikto -host "$NIKTO_TARGET" -Format txt -output nikto_scan_output.txt
   printf "${GREEN}Nikto scan complete. Results saved to 'nikto_scan_output.txt'${NC}\n"
-  
+
   # Check for SQL injection vulnerabilities in Nikto output
   if grep -q "SQL Injection" nikto_scan_output.txt; then
     printf "${RED}⚠️ Nikto found potential SQL Injection vulnerabilities!${NC}\n"
@@ -181,7 +239,7 @@ if command -v nikto &> /dev/null; then
   fi
 else
   printf "${YELLOW}Nikto not installed. Skipping automated vulnerability scan.${NC}\n"
-  printf "${YELLOW}Install Nikto with: sudo apt-get install nikto (Debian/Ubuntu) brew install nikto (Mac)${NC}\n"
+  printf "${YELLOW}Install Nikto with: sudo apt-get install nikto (Debian/Ubuntu)${NC}\n"
   nikto_sql_detected=false
 fi
 

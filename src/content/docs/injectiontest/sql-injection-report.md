@@ -102,7 +102,7 @@ To execute the tests, you will need:
    - Yellow question marks (?) indicate inconclusive tests
 
    The script will provide a summary at the end with counts of passed, failed, and inconclusive tests.
-   
+
    > **Important:** The script may show "Valid login failed" in the test summary even when your authentication system is working correctly. This occurs because the script expects a specific response format (200 status code with an auth_token in the response), while your API might use a different format (e.g., 201 status code with user data). This limitation does not affect the SQL injection test results.
 
 ### Understanding Results
@@ -169,6 +169,20 @@ Based on our findings, the following actions are recommended:
 5. **Error Handling Enhancement:**
    - Review error messages across the application to ensure they don't leak sensitive information
    - Implement consistent error handling patterns across all endpoints
+
+6. **Script Improvements Implemented:**
+   - Changed all hardcoded URLs to use the variables defined at the top of the script
+   - Updated curl commands to use `$TARGET_URL` instead of hardcoded URLs
+   - Made sure all references to URLs use the variables
+   - Added command-line options for easier customization:
+     - Added a `-a` option to set the API URL
+     - Added a `-c` option to set the client URL
+     - Added a `-u` option to set the student username
+     - Added a `-p` option to set the student password
+     - Added a `-h` option to show help
+   - Added auto-detection of API URLs from project configuration files
+   - Added support for configuration through an external file
+   - Improved error handling and reporting
 
 These actions will further strengthen the application's security posture and ensure that SQL injection vulnerabilities remain properly mitigated.
 
