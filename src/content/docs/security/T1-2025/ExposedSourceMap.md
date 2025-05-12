@@ -27,7 +27,7 @@ to clarify that:
 ```
 
 - In our deployment process, production builds are created using the Angular CLI with the
-  --configuration production flag, which disables the generation and exposure of source maps by
+  `--configuration production` flag, which disables the generation and exposure of source maps by
   default.
 
 ```
