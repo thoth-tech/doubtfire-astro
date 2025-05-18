@@ -1,5 +1,0 @@
----
-title: Example
----
-
-# Add topic

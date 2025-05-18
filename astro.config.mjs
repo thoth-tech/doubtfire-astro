@@ -40,8 +40,12 @@ export default defineConfig({
           },
           items: [
             {
-              label: 'Frontend Documentation',
-              link: '/frontend/page',
+              label: 'Frontend Component Documentation List',
+              link: '/frontend/component_list',
+            },
+            {
+              label: 'staff grant extension',
+              link: '/frontend/staff_grant_extension',
             },
           ],
         },
@@ -91,6 +95,10 @@ export default defineConfig({
             {
               label: 'setting',
               link: '/backend/api/setting',
+            },
+            {
+              label: 'staff grant extension',
+              link: '/backend/api/staff_grant_extension',
             },
             {
               label: 'students',
