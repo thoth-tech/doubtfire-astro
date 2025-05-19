@@ -76,21 +76,14 @@ This document is intended for frontend developers, designers, and stakeholders r
 
 ## 3. Non-Functional Requirements
 
-### 3.1 Performance
-- Pages displaying session data should load within 300ms.
-- Ensure smooth interactions and updates even with large datasets.
 
-### 3.2 Usability
+### 3.1 Usability
 - The user interface should be easy to use and visually clear for both tutors and admins.
 - Ensure accessibility and user-friendly design for diverse audiences.
 
-### 3.3 Compatibility
+### 3.2 Compatibility
 - Ensure compatibility with modern web browsers such as Chrome, Firefox, Safari, and Edge.
 - Make sure the frontend is fully functional across desktop and mobile browsers.
-
-### 3.4 Security
-- Secure the session data with appropriate authentication and authorization mechanisms.
-- Implement role-based access control (RBAC) to ensure that only authorized users can view specific data.
 
 ---
 
