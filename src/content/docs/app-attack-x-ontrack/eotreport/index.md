@@ -21,7 +21,7 @@ To ensure continuity and avoid duplication, the following table provides a quick
 
 | Vulnerability Name                                                   | Impact Level  | PR Link     |
 | -------------------------------------------------------------------- | ------------- | ----------- |
-| Clickjacking                                                         | Severe        | [doubtfire-deploy](#https://github.com/thoth-tech/doubtfire-deploy/pull/28) [doubtfire-web](#https://github.com/thoth-tech/doubtfire-web/pull/321) [doubtfire-dcoumentation](#https://github.com/thoth-tech/documentation/pull/593) |
+| Clickjacking                                                         | Severe        | https://github.com/thoth-tech/doubtfire-deploy/pull/28 https://github.com/thoth-tech/doubtfire-web/pull/321 https://github.com/thoth-tech/documentation/pull/593 |
 | Insecure Direct Object Reference (IDOR)                              | Major         | [View PR](#) |
 | Malicious Code Execution                                             | Major         | [Pending](#) |
 | Exposed JavaScript Source Maps _(False Positive)_                    | Major         | N/A         |
