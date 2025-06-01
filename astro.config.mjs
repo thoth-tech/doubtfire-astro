@@ -59,7 +59,7 @@ export default defineConfig({
             {
               label: 'activity types',
               link: '/backend/api/activity_types',
-            },     
+            },
             {
               label: 'admin',
               link: '/backend/api/admin',
@@ -210,6 +210,26 @@ export default defineConfig({
             }
           ],
         },
+        {
+          label: 'App Attack x OnTrack',
+          autogenerate: {
+            directory: '/app-attack-x-ontrack',
+          },
+          items: [
+            {
+              label: 'Signed Contract',
+              link: '/app-attack-x-ontrack/penetrationcontract/contract',
+            },
+            {
+              label: 'Stage 1 Findings',
+              link: '/app-attack-x-ontrack/stage1findings/',
+            },
+            {
+              label: 'End of Trimester Report',
+              link: '/app-attack-x-ontrack/eotreport/',
+            },
+          ]
+        }
       ],
     }),
   ],
