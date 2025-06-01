@@ -15,16 +15,16 @@ This report has been submitted by the AppAttack team as part of the final delive
 
 ---
 
-## Guidance for Future Security Contributors
+## 🧭 Guidance for Future Security Contributors
 
 To ensure continuity and avoid duplication, the following table provides a quick reference of vulnerabilities already addressed during the AppAttack x OnTrack collaboration. Future contributors should **not rework** these fixes unless new risks are identified.
 
 | Vulnerability Name                                                   | Impact Level  | PR Link     |
 | -------------------------------------------------------------------- | ------------- | ----------- |
 | Clickjacking                                                         | Severe        | https://github.com/thoth-tech/doubtfire-deploy/pull/28 https://github.com/thoth-tech/doubtfire-web/pull/321 https://github.com/thoth-tech/documentation/pull/593 |
-| Insecure Direct Object Reference (IDOR)                              | Major         | [View PR](#) |
-| Malicious Code Execution                                             | Major         | [Pending](#) |
-| Exposed JavaScript Source Maps _(False Positive)_                    | Major         | N/A         |
-| Session Hijacking and Fixation                                       | Significant   | [Pending](#) |
-| Token Exposure via Local Storage and HTTP Headers _(False Positive)_ | Significant   | N/A         |
-| Misconfigured CORS _(False Positive)_                                | Significant   | N/A         |
+| Insecure Direct Object Reference (IDOR)                              | Major         | https://github.com/thoth-tech/documentation/pull/598 https://github.com/thoth-tech/doubtfire-api/pull/63 |
+| Malicious Code Execution                                             | Major         | https://github.com/thoth-tech/doubtfire-astro/pull/35 https://github.com/thoth-tech/doubtfire-astro/pull/35 https://github.com/thoth-tech/doubtfire-web/pull/333 |
+| Exposed JavaScript Source Maps _(False Positive)_                    | Major         | https://github.com/thoth-tech/doubtfire-astro/pull/37/commits https://github.com/thoth-tech/documentation/pull/596 |
+| Session Hijacking and Fixation                                       | Significant   | https://github.com/thoth-tech/doubtfire-api/pull/61 |
+| Token Exposure via Local Storage and HTTP Headers _(False Positive)_ | Significant   | https://github.com/thoth-tech/doubtfire-astro/pull/38 |
+| Misconfigured CORS _(False Positive)_                                | Significant   | https://github.com/thoth-tech/doubtfire-astro/pull/41 |
