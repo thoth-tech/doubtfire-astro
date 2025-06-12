@@ -27,6 +27,10 @@ export default defineConfig({
           },
           items: [
             {
+              label: 'Frontend Documentation',
+              link: '/frontend/page',
+            },
+            {
               label: 'OnTrack Intial Setup Guidance',
               link: '/setup/set',
             },
@@ -39,10 +43,17 @@ export default defineConfig({
             directory: '/frontend',
           },
           items: [
+        
             {
-              label: 'Frontend Documentation',
-              link: '/frontend/page',
+              label: 'Frontend Tutor-Times Design',
+              link: '/frontend/tutor-times/tutor-times-design',
             },
+            {
+              label:'Frontend Tutor-Times Requirements',
+              link: '/frontend/tutor-times/tutor-times-requirements',
+            }
+           
+
           ],
         },
 
