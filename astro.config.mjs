@@ -70,7 +70,7 @@ export default defineConfig({
             {
               label: 'activity types',
               link: '/backend/api/activity_types',
-            },     
+            },
             {
               label: 'admin',
               link: '/backend/api/admin',
@@ -218,8 +218,14 @@ export default defineConfig({
             {
               label: 'Backend APIs',
               link: '/courseflow/backend',
-            }
+            },
           ],
+        },
+        {
+          label: 'Security',
+          autogenerate: {
+            directory: '/security',
+          },
         },
       ],
     }),
