@@ -179,22 +179,6 @@ export default defineConfig({
               label: 'stats',
               link: '/backend/api/stats',
             },
-            {
-              label: 'Tutor Times',
-              autogenerate: {
-                directory: '/tutor_times',
-              },
-              items: [
-                {
-                  label: 'Requirements Document',
-                  link: '/backend/tutor_times/requirements_document',
-                },
-                {
-                  label: 'Design Document',
-                  link: '/backend/tutor_times/design_document',
-                },
-              ],
-            },
           ],
         },
         {
