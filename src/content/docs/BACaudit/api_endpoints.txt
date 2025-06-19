@@ -1,0 +1,21 @@
+# Doubtfire API Endpoints List#
+/api/activity_types
+/api/admin
+/api/auth
+/api/auth_test
+/api/campuses
+/api/csv
+/api/projects
+/api/settings
+/api/students
+/api/submission
+/api/tasks
+/api/teaching_periods
+/api/tii_actions
+/api/tii_eula
+/api/tii_hook
+/api/tutorials
+/api/unit_roles
+/api/units
+/api/users
+/api/webcals
