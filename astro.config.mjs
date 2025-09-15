@@ -172,6 +172,10 @@ export default defineConfig({
               link: '/backend/api/api-task_definitions',
             },
             {
+                label: 'observer-access',
+                link: '/backend/api/observer-access',
+              },
+            {
               label: 'learning',
               link: '/backend/api/learning',
             },
