@@ -1,3 +1,6 @@
+---
+title: SQL Injection Vulnerability Assessment
+---
 # SQL Injection Vulnerability Assessment
 
 ## 1. Introduction
