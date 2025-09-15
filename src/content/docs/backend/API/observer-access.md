@@ -3,14 +3,14 @@ title: "Observer Access Control"
 description: "Documentation of the observer role and its enforced read-only access policy in the Doubtfire API."
 ---
 
-# Introduction
+## Introduction
 
-## Overview
+### Overview
 
 The Observer Role is a new property added to unit-level roles (`unit_roles` table) in the Doubtfire API. It enables read-only access for tutors or convenors who are granted observer-level privileges. Observers can view information but cannot perform any actions that modify data.
 
 
-## Changes made
+### Changes made
 The following changes have been made under this role:
 
 
@@ -19,7 +19,7 @@ The following changes have been made under this role:
 - Updated `db/schema.rb` to reflect the migration changes.
 - Created unit tests in `test/helpers/authorisation_helpers_test.rb` to validate observer behavior.
 
-## Target audience
+### Target audience
 This functionality supports:
 
 - External reviewers
@@ -27,6 +27,7 @@ This functionality supports:
 - Auditors
 - Passive monitoring of unit performance
 ---
+
 
 ## Implementation Details
 
@@ -45,7 +46,7 @@ end
 ### Updated code logic for new role
 In the previously existing file `authorisation_helpers.rb` under `app/helpers/`  , we have added a new part that will help in adding logic to the observer role. It will limit the observers access control only to read. They will not be able to make any unnecessary changes.
 
-Code logic added in `authorisation_helpers.rb`:
+- Code logic added in `authorisation_helpers.rb`:
 
 ```ruby
 if role_obj.respond_to?(:observer) && role_obj.observer && action != :get
@@ -63,7 +64,11 @@ Following the code logic that has been implemented, the observer will be allowed
 
 
 ### Updated database
-Since a new column has been added to the table of unit_roles, the  `schema.rb`  file was also updated. All the `charset`  have been updated to a different alias of `utf8`, which is `utfmb3`. The `collation` has also been updated to  ` utf8mb3_unicode_ci`.  Following is the changes made to the `unit-roles` table, along with the general changes of the schema:
+Since a new column has been added to the table of unit_roles, the  `schema.rb`  file was also updated.
+-  All the `charset`  have been updated to a different alias of `utf8`, which is `utf8mb3`. 
+-  The `collation` has also been updated to  ` utf8mb3_unicode_ci`.  
+
+Following is the changes made to the `unit-roles` table, along with the general changes of the schema:
 
 ```ruby
 create_table "unit_roles", charset: "utf8mb3", collation: "utf8mb3_unicode_ci", force: :cascade do |t|  # charset and collation have been updated
@@ -85,7 +90,7 @@ create_table "unit_roles", charset: "utf8mb3", collation: "utf8mb3_unicode_ci", 
 
 Two tests have been added under`helpers` in the file `authorisation_helpers_test.rb` . In the two unit tests, one will verify that that observer cannot perform non-GET actions and the other will verify observer can perform `:get` actions. 
 
--	Observer cannot perform actions other than `:get`
+- Observer cannot perform actions other than `:get`
  
  In this unit test, we create a user with a role (such as a tutor) where the value of observer is `true`. This new role will be added in the `unit_role` table. If the user tries any action other than  `:get`(for example, we used the action `:post`) , their attempts will be rejected. Following is the test logic for this unit test: 
 
