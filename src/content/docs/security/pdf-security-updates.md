@@ -1,5 +1,5 @@
 ---
-title: security update
+title: PDF Security Updates
 ---
 # PDF Security Updates
 
