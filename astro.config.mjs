@@ -51,9 +51,11 @@ export default defineConfig({
             {
               label:'Frontend Tutor-Times Requirements',
               link: '/frontend/tutor-times/tutor-times-requirements',
+            },
+            {
+              label: 'Tutor Time Dashboard',
+              link: '/frontend/tutor-time-dashboard',
             }
-           
-
           ],
         },
 
