@@ -40,4 +40,4 @@ It helps instructors by offering:
 ## Notes
 This documentation describes the Tutor Time Dashboard implemented in the frontend (`doubtfire-web`).  
 It introduces a new view accessible at `/tutor-times` and was developed as a frontend-only feature, using mock data for demonstration purposes.
-To complete this feature and integrate it fully into the project, a backend data service must be implemented and the frontend updated accordingly to connect with the live data source.
+To complete this feature and integrate it fully into the project, a backend (`doubtfire-api`) data service must be implemented and the frontend updated accordingly to connect with the live data source.
