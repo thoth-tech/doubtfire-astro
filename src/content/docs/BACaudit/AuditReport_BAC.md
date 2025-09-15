@@ -1,5 +1,5 @@
 ---
-title: Web Security Audit Broken Access Control  Vulnerability Report
+title: Web Security Audit Broken Access Control Vulnerability Report
 ---
 # Web Security Audit: Broken Access Control Vulnerability Report
 
