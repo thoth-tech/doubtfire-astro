@@ -27,6 +27,10 @@ export default defineConfig({
           },
           items: [
             {
+              label: 'Frontend Documentation',
+              link: '/frontend/page',
+            },
+            {
               label: 'OnTrack Intial Setup Guidance',
               link: '/setup/set',
             },
@@ -39,10 +43,17 @@ export default defineConfig({
             directory: '/frontend',
           },
           items: [
+        
             {
-              label: 'Frontend Documentation',
-              link: '/frontend/page',
+              label: 'Frontend Tutor-Times Design',
+              link: '/frontend/tutor-times/tutor-times-design',
             },
+            {
+              label:'Frontend Tutor-Times Requirements',
+              link: '/frontend/tutor-times/tutor-times-requirements',
+            }
+           
+
           ],
         },
 
@@ -59,7 +70,7 @@ export default defineConfig({
             {
               label: 'activity types',
               link: '/backend/api/activity_types',
-            },     
+            },
             {
               label: 'admin',
               link: '/backend/api/admin',
@@ -168,6 +179,22 @@ export default defineConfig({
               label: 'stats',
               link: '/backend/api/stats',
             },
+            {
+              label: 'Tutor Times',
+              autogenerate: {
+                directory: '/tutor_times',
+              },
+              items: [
+                {
+                  label: 'Requirements Document',
+                  link: '/backend/tutor_times/requirements_document',
+                },
+                {
+                  label: 'Design Document',
+                  link: '/backend/tutor_times/design_document',
+                },
+              ],
+            },
           ],
         },
         {
@@ -207,8 +234,14 @@ export default defineConfig({
             {
               label: 'Backend APIs',
               link: '/courseflow/backend',
-            }
+            },
           ],
+        },
+        {
+          label: 'Security',
+          autogenerate: {
+            directory: '/security',
+          },
         },
       ],
     }),
