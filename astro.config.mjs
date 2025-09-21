@@ -47,6 +47,12 @@ export default defineConfig({
             {
               label: 'Frontend Tutor-Times Design',
               link: '/frontend/tutor-times/tutor-times-design',
+              label: 'Frontend Component Documentation List',
+              link: '/frontend/component_list',
+            },
+            {
+              label: 'staff grant extension',
+              link: '/frontend/staff_grant_extension',
             },
             {
               label:'Frontend Tutor-Times Requirements',
@@ -102,6 +108,10 @@ export default defineConfig({
             {
               label: 'setting',
               link: '/backend/api/setting',
+            },
+            {
+              label: 'staff grant extension',
+              link: '/backend/api/staff_grant_extension',
             },
             {
               label: 'students',
