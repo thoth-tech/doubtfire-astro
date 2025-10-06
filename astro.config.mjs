@@ -243,6 +243,18 @@ export default defineConfig({
             directory: '/security',
           },
         },
+        {
+          label: 'Project Proposal',
+          autogenerate: {
+            directory: '/project_proposals',
+          },
+          items: [
+            {
+              label: 'OnTrack Performance Tracking and Optimization Proposal',
+              link: '/project_proposals/google_lighthouse_performance',
+            },
+          ],
+        },
       ],
     }),
   ],
