@@ -1,12 +1,12 @@
 services:
-  astro-dev:
+  df-astro-dev:
     build:
       context: ../
       dockerfile: Dockerfile
     ports:
-      - "4321:4321"  # or whatever port your dev server uses
+      - "4324:4324"
     volumes:
       - ..:/site
-      - astro-node_modules:/site/node_modules
+      - df-astro-node_modules:/site/node_modules
 volumes:
-  astro-node_modules:
+  df-astro-node_modules:
