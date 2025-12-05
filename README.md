@@ -3,22 +3,22 @@ https://ontrackdocumentation.netlify.app/
 
 # Contributing to Doubtfire Astro Repository
 
-This guide provides high-level details on how to contribute to the Doubtfire repositories. This repository reflects the code for Ontrack documentation website. 
+This guide provides high-level details on how to contribute to the Doubtfire repositories. This repository reflects the code for Ontrack documentation website.
 
 
-The Ontrack documentation website is a centralised repository for recording all technical documentation for Ontrack project. 
+The Ontrack documentation website is a centralised repository for recording all technical documentation for Ontrack project.
 
 ## Background
 
-The **doubtfire-astro** project provides the base repository containing information on technical document for OnTrack project. 
+The **doubtfire-astro** project provides the base repository containing information on technical document for OnTrack project.
 
 The OnTrack project contains following submodules:
 - [doubtfire-api](https://github.com/thoth-tech/doubtfire-api) contain the backend RESTful API. This uses Rails' [active model](https://guides.rubyonrails.org/active_model_basics.html) with the [Grape REST api framework](https://github.com/ruby-grape/grape).
 - [doubtfire-web](https://github.com/thoth-tech/doubtfire-web) hosts the frontend code implemented in [Angular](https://angular.io) and [AngularJS](https://angularjs.org). This implements the web application that connects to the backend api.
-- [doubtfire-overseer](https://github.com/thoth-tech/doubtfire-overseer) provides facilities to run automated tasks on student submissions. Please get in touch with the core team if you want access to this repository. 
+- [doubtfire-overseer](https://github.com/thoth-tech/doubtfire-overseer) provides facilities to run automated tasks on student submissions. Please get in touch with the core team if you want access to this repository.
 
 
-### Working on onTrack documentation website
+### Working on OnTrack documentation website
 
 To get started:
 
@@ -26,24 +26,24 @@ To get started:
 
     To push your contributions, you will need a fork of each repository. Contributions can then be made by making pull requests back into the main repositories.
 
-2. Clone your [doubtfire-astro](https://github.com/thoth-tech/doubtfire-astro). 
+2. Clone your [doubtfire-astro](https://github.com/thoth-tech/doubtfire-astro).
 
     `git clone https://github.com/YOUR_USERNAME/doubtfire-astro`
 
-3. Open the cloned repository in VS code 
+3. Open the cloned repository in VS code
   - Open VS code
-  - Navigate to File and select ```Open folder``` 
+  - Navigate to File and select ```Open folder```
   - Select the folder where you have cloned this repository
   - you will be able to see all the files now
 
-4. To make changes/ add content to OnTrack Technical documentation website 
+4. To make changes/ add content to OnTrack Technical documentation website
   - Go to the ```scr``` folder
-  - New Pages can be added or changes to existing pages can be made by navigating to ```content``` folder 
+  - New Pages can be added or changes to existing pages can be made by navigating to ```content``` folder
   - Images are required to be stored under ```assets``` folder
 
-5. Note - when adding new pages you would need to do following 
+5. Note - when adding new pages you would need to do following
   - Make changes to ```content``` and also the ```astro.config.mjs``` file in parallel
-  e.g. We have a page for backend API list api_list.md the path of this needs to be mention in ```astro.config.mjs``` file 
+  e.g. We have a page for backend API list api_list.md the path of this needs to be mention in ```astro.config.mjs``` file
     ```
     items: [
               {
@@ -55,13 +55,13 @@ To get started:
 
 6. To see changes and verify changes being made are reflecting in Website follow the below steps:
   - Open node terminal in your VS code project
-  - Run the command ```npm run dev``` 
+  - Run the command ```npm run dev```
   - This will load the website locally
   - For any additional commands on Starlight refer to ```starlight.md```
 
 
 
-## Pushing changes to Thoth Tech doubtfire-astro repository 
+## Pushing changes to Thoth Tech doubtfire-astro repository
 
 To start work on a new feature.
 
@@ -164,4 +164,3 @@ Use the body (lines after the top line) to explain why and what and *not* how; k
 ### But how can I write new lines if I'm using `git commit -m "Message"`?
 
 Don't use the `-m` switch. Use a text editor to write your commit message instead.
-

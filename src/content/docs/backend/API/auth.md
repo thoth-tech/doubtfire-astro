@@ -3,7 +3,7 @@ title: Doubtfire API Documentation
 ---
 
 # API: Auth
-auth : Operations about auth 
+auth : Operations about auth
 
 This markdown document provides detailed documentation for the "auth" API endpoints, including their URLs, methods, parameters (if any), responses, and example requests using curl
 
@@ -22,12 +22,12 @@ This "auth" API has the following operations.
 
 - URL: `/api/auth`
 - Method: `DELETE`
-- Parameters: 
+- Parameters:
     | Parameter           | Description     |Parameter Type| Data Type|Mandatory|
     |---------------------|-----------------|------------|------------|---|
     |Username | User username | header | string |Yes|
     |Auth_Token | Authentication token | header | string |Yes|
-    
+
 - Response:
   - `204 No Content`: Authentication deleted successfully.
 
@@ -36,7 +36,7 @@ This "auth" API has the following operations.
   curl -X DELETE --header 'Accept: application/json' --header 'username: student_1' --header 'auth_token: RbYVL1screzs9QGbAkd' 'http://localhost:3000/api/auth' curl -X DELETE http://doubtfire.com/api/auth
   ```
 
-### POST: Sign in 
+### POST: Sign in
 
 - URL: `/api/auth`
 - Method:  `POST`
@@ -115,7 +115,7 @@ GET /api/auth/signout_url
     ```bash
     curl -X GET --header 'Accept: application/json' 'http://localhost:3000/api/auth/signout_url'
     ```
-- Response body: 
+- Response body:
     ```json
     {
         "auth_signout_url": null
@@ -136,7 +136,7 @@ GET /api/auth/method
     ```bash
     curl -X GET --header 'Accept: application/json' 'http://localhost:3000/api/auth/method'
     ```
-- Response body: 
+- Response body:
     ```json
     {
         "method": "database",
@@ -149,11 +149,11 @@ POST /api/auth/jwt
 
 - URL: `/api/auth/jwt`
 - Method: `POST`
-- Parameters: 
+- Parameters:
     | Parameter           | Description     |Parameter Type| Data Type|Mandatory|
     |---------------------|-----------------|------------|------------|---|
     |SAMLResponse | Data provided for further processing | header | string |Yes|
-    
+
 - Response:
   - `201 Created`: The JWT token is successfully generated.
 
@@ -176,4 +176,3 @@ POST /api/auth/jwt
         }
     }
     ```
-
