@@ -4,11 +4,7 @@ services:
       context: ../
       dockerfile: Dockerfile
     ports:
-<<<<<<< HEAD
       - "4324:4324"
-=======
-      - "4321:4321"
->>>>>>> 04b5104 (fix: volumes attribute under services.astro-dev)
     volumes:
       - ..:/site
       - df-astro-node_modules:/site/node_modules
