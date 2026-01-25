@@ -4,11 +4,7 @@
   "service": "df-astro-dev",
   "workspaceFolder": "/site",
   "workspaceMount": "source=${localWorkspaceFolder},target=/site,type=bind",
-<<<<<<< Updated upstream
-  "forwardPorts": [4324],
-=======
   "forwardPorts": [4322],
->>>>>>> Stashed changes
   "postStartCommand": "npm run dev",
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {}

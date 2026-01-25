@@ -4,12 +4,6 @@ services:
       context: ../
       dockerfile: Dockerfile
     ports:
-<<<<<<< Updated upstream
-      - "4324:4324"
-    volumes:
-      - ..:/site
-      - df-astro-node_modules:/site/node_modules
-=======
       - "4322:4322"
     volumes:
       - ..:/site
@@ -17,6 +11,5 @@ services:
     tty: true
     stdin_open: true
     command: sleep infinity
->>>>>>> Stashed changes
 volumes:
   df-astro-node_modules:
