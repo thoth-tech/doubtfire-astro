@@ -7,7 +7,7 @@ services:
       - "4322:4322"
     volumes:
       - ..:/site
-      - astro-node_modules:/site/node_modules
+      - df-astro-node_modules:/site/node_modules
     tty: true
     stdin_open: true
     command: sleep infinity
