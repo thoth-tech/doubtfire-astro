@@ -21,7 +21,7 @@ This enables you to contribute to the project documentation. You should also rea
 
 Terminal window
 
-git clone -b doc/view-task-and-submission-redesign –single-branch <https://github.com/thoth-tech/documentation.git>
+git clone <https://github.com/thoth-tech/doubtfire-astro.git>
 
 ## WSL2
 
