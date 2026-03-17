@@ -4,9 +4,12 @@ title: Initial Setup
 
 ## Trello
 
-- Register a [Trello](https://trello.com/signup) account. (Please use your Deakin student ID)
-- Confirm your Trello account by email (may go to Trash, so be sure to check there).
-- Join the Trello board that is assigned by your delivery Lead. The previous team’s [Trello board](https://trello.com/b/FWyBUYG8/task-view-re-design-team-ontrack-project)
+## Task Management (Microsoft Planner)
+
+- Ensure you have access to the **Thoth Tech** Microsoft Team.
+- Navigate to the **Documentation Team** channel.
+- Open the **Planner** tab at the top to view and assign yourself to active tasks.
+- If you cannot see the board, contact your Delivery Lead to be added to the cohort's workspace.
 
 ## Configuring git (global)
 
