@@ -1,22 +1,39 @@
 ---
-title: OnTrack Team Structure
-description: This page list key contacts for OnTrack project.
+title: Team
+description: Key contacts of OnTrack project.
 ---
 
 This page list key contacts of OnTrack project.
 
 ## Team
 
-### Company Director:
+### Company Board:
 
-- Andrew Cain – Productor Owner (OnTrack)
+- Dr. Hourieh Khalajzadeh — Company Director
+- Prof. Andrew Cain — Product Owner (OnTrack and SplashKit)
 
 ### OnTrack Product Mentors:
 
-- Daniel Maddern
-- Nebula Alam
+- Brian Dang — OnTrack
+- Monica Tasmin — SplashKit
 
-### Team Lead:
+### Senior Leaders:
 
-- Satika Jayawardena – Student Lead (OnTrack), Communications Lead
-- Josh Kilinc – Student Lead (OnTrack), Code Lead (OnTrack)
+- Steven Dalamaras
+- Wael Alahmadi
+- Ruth Faith Wandabwa
+- Ajay Palpatiam Parambil Anand
+- Prishnee Nuckcheddy
+- David Kamau Nganga
+
+### Junior Leaders:
+
+- Niethin Shreedharan
+- Gurwinder Singh
+- Mudith Makawitage
+- Ly Leang
+- Thirumal Reddy Enugu
+- Owen Costin
+
+_Last updated: 20 March 2026_
+_Author: Roeen Kareemy_
