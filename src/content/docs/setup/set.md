@@ -6,10 +6,10 @@ title: Initial Setup
 
 ## Task Management (Microsoft Planner)
 
-- Ensure you have access to the **Thoth Tech** Microsoft Team.
-- Navigate to the **Documentation Team** channel.
-- Open the **Planner** tab at the top to view and assign yourself to active tasks.
-- If you cannot see the board, contact your Delivery Lead to be added to the cohort's workspace.
+- Ensure you have access to the **Thoth Tech** Microsoft Teams Channel. If not, please contact Morgaine so she can add you to the channel.
+- Navigate to the **OnTrack** channel.
+- Open the **OnTrack Planner Board** tab at the top to view and assign yourself to active tasks.
+- If you cannot see the board, contact Brain Dang to be added to the cohort's workspace.
 
 ## Configuring git (global)
 
@@ -24,7 +24,7 @@ This enables you to contribute to the project documentation. You should also rea
 
 Terminal window
 
-git clone <https://github.com/thoth-tech/doubtfire-astro.git>
+git clone https://github.com/thoth-tech/doubtfire-astro.git
 
 ## WSL2
 
