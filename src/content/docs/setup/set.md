@@ -61,25 +61,20 @@ git remote add task-view-submission <https://github.com/PROVIDED_USERNAME/doubtf
 
 ## What Next?
 
-- Become familiar with [the project epic](https://main--strong-fairy-c1bde1.netlify.app/products/ontrack/projects/task-submission--redesign/project-on-boarding/Epic.md)
-- Become familiar with [the user stories and features](https://main--strong-fairy-c1bde1.netlify.app/products/ontrack/projects/task-submission--redesign/project-on-boarding/User-Stories-and-Features.md)
-  - Are there any users that are not served in the user stories or by the features?
-- Become familiar with [the requirements](https://main--strong-fairy-c1bde1.netlify.app/products/ontrack/projects/task-submission--redesign/project-on-boarding/Requirements.md)
-  - Are all stakeholders sufficiently provided for, with this set of requirements?
-- Become familiar with [the deliverables](https://main--strong-fairy-c1bde1.netlify.app/products/ontrack/projects/task-submission--redesign/project-on-boarding/Deliverables.md)
-  - Are there deliverable items that should be added?
-  - Are there deliverable items that should be removed?
-  - Are there deliverable items that can be decomposed into smaller deliverable items?
-- Examine [the first proposed design](https://main--strong-fairy-c1bde1.netlify.app/products/ontrack/projects/task-submission--redesign/project-on-boarding/design_images/T2-2022/iteration-3-design-1.png) and ensure all requirements are met, and that the inclusion of the features are user-friendly.
-- Examine [the second proposed design](https://main--strong-fairy-c1bde1.netlify.app/products/ontrack/projects/task-submission--redesign/project-on-boarding/design_images/T2-2022/iteration-3-design-2.png) and ensure all requirements are met, and that the inclusion of the features are user-friendly.
-  - Examine [the second design’s prototype](https://www.figma.com/proto/XmKxWQ43MwrD6Red1DvYq6/Wire-Frame-Designs?node-id=478%3A4466&scaling=min-zoom&page-id=476%3A4327&starting-point-node-id=478%3A4466).
-- Select a front-end design to modify, improve, extend, or implement.
-- Examine the back-end emulator.
-  - Has it successfully passed proof-of-concept?
-  - How can git be implemented on the back-end of the OnTrack product?
-- Work on implementing the front-end and back-end.
-- If somebody on your team is well-versed in cyber-security, then an examination of the security of the implementation is required.
-- If somebody on the team is well-versed in databases and database administration, then a model of the database is required.
+Now that your environment is set up, familiarise yourself with the current project goals and documentation.
+
+- **Check the Planner Board:** Navigate to the [OnTrack Planner Board](https://planner.cloud.microsoft/webui/plan/njykIFLDn0iAY1at7tACfcgADgBS/view/board?tid=d02378ec-1688-46d5-8540-1c28b5f470f6) to view the current backlog.
+- **T1 2026 Cohort Update:** Assist in updating all project references from 2025 to the current **T1 2026** cohort.
+- **Refine Guides and Tutorials:** Review existing setup files (like this one!) to ensure they match the current repository structure ('doubtfire-astro').
+- **Techical Documentation:**
+    - **Timestamp & Author:** Implement a global "last updated" and "author" field for all documentation pages.
+    - **Repository Cleanup:** Tidy the Microsoft Teams and Sharepoint documentation repositories to remove redundant legacy files.
+- **Pull Request Management:** Monitor and close out any remaining pull requests against the documentation repositories to keep the main branch clean.
+
+## Technical & Specialised Tasks
+
+- **Security & Databases:** If you have specialised knowledge in cyber-security or database adminstration, check the specialised tasks on the Planner board for implementation reviews.
+- **Git Integration:** Examine how Git can be better implemented on the back-end of the OnTrack product as part of the current sprint.
 
 ## Helpful Points
 
