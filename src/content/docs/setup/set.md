@@ -2,8 +2,6 @@
 title: Initial Setup
 ---
 
-## Trello
-
 ## Task Management (Microsoft Planner)
 
 - Ensure you have access to the **Thoth Tech** Microsoft Teams Channel. If not, please contact Morgaine so she can add you to the channel.
