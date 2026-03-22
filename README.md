@@ -6,19 +6,19 @@ https://ontrackdocumentation.netlify.app/
 This guide provides high-level details on how to contribute to the Doubtfire repositories. This repository reflects the code for Ontrack documentation website.
 
 
-The Ontrack documentation website is a centralised repository for recording all technical documentation for Ontrack project.
+The Ontrack documentation website is a centralised repository for recording all technical documentation for the Ontrack project.
 
 ## Background
 
-The **doubtfire-astro** project provides the base repository containing information on technical document for OnTrack project.
+The **doubtfire-astro** project provides the base repository containing information on technical documentation for OnTrack project.
 
-The OnTrack project contains following submodules:
-- [doubtfire-api](https://github.com/thoth-tech/doubtfire-api) contain the backend RESTful API. This uses Rails' [active model](https://guides.rubyonrails.org/active_model_basics.html) with the [Grape REST api framework](https://github.com/ruby-grape/grape).
+The OnTrack project contains the following submodules:
+- [doubtfire-api](https://github.com/thoth-tech/doubtfire-api) contains the backend RESTful API. This uses Rails' [active model](https://guides.rubyonrails.org/active_model_basics.html) with the [Grape REST api framework](https://github.com/ruby-grape/grape).
 - [doubtfire-web](https://github.com/thoth-tech/doubtfire-web) hosts the frontend code implemented in [Angular](https://angular.io) and [AngularJS](https://angularjs.org). This implements the web application that connects to the backend api.
 - [doubtfire-overseer](https://github.com/thoth-tech/doubtfire-overseer) provides facilities to run automated tasks on student submissions. Please get in touch with the core team if you want access to this repository.
 
 
-### Working on OnTrack documentation website
+### Getting Started / Working on the OnTrack Documentation Website
 
 To get started:
 
@@ -36,9 +36,26 @@ To get started:
   - Select the folder where you have cloned this repository
   - you will be able to see all the files now
 
-4. To make changes/ add content to OnTrack Technical documentation website
-  - Go to the ```scr``` folder
-  - New Pages can be added or changes to existing pages can be made by navigating to ```content``` folder
+### Recommended: Use Dev Container (Docker)
+
+The `doubtfire-astro` repository includes a Docker development container, which simplifies setup.
+
+- Ensure you have Docker Desktop installed (https://www.docker.com/products/docker-desktop/).
+- Ensure you have the **Dev Containers** extension installed in Visual Studio Code.
+
+- Once the project is opened in Visual Studio Code (as described in Step 3)
+- You should then receive a prompt (usually bottom right) - click on **Reopen in Container**
+
+If you don't receive a prompt, you can do this manually:
+- Press `Cmd + Shift + P` (Mac) OR `Ctrl + Shift + P` (Windows)
+- Search: `Dev Containers: Reopen in Container`
+
+VS Code will then build and start the container.
+
+
+4. To make changes and/or add content to OnTrack Technical documentation website:
+  - Go to the ```src``` folder
+  - New pages or changes to existing pages can be made by navigating to ```content``` folder
   - Images are required to be stored under ```assets``` folder
 
 5. Note - when adding new pages you would need to do following
@@ -59,18 +76,33 @@ To get started:
   - This will load the website locally
   - For any additional commands on Starlight refer to ```starlight.md```
 
+### If you have trouble running "npm run dev"
+
+Using the Dev Container is recommended as it should avoid most local set up issues. 
+
+However, if you are not using the Dev Container:
+
+- Ensure you have `Node.js` installed (v18 or later)
+  - Navigate to most up to date Node.js website - https://nodejs.org/en/download
+  - Follow instructions as per your system requirements
+  - Confirm "Node.js" installation using:
+  `node -v`
+- Ensure `npm` dependencies are installed (__do this in the `doubtfire-astro` repo__)
+  - Run the `npm install` command and let it install
+  - Confirm npm is installed using:
+  `npm -v`
 
 
 ## Pushing changes to Thoth Tech doubtfire-astro repository
 
 To start work on a new feature.
 
-1. Make your changes in locally
+1. First make your changes locally
 2. Create a **draft** [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) and document the change you are working on. Doing this early will make sure that you get feedback on your work quickly.
-4. Complete your work, pushing to your fork's feature branch. This will update your existing PR (no need to create new PRs)
-5. Update the status of your PR removing the **draft** status, and flag someone in the Core team to review and incorporate your work.
-6. Address any changes required. Pushing new commits to your branch to update the PR as needed.
-7. Once your PR is merged you can delete your feature branch and repeat this process for new features...
+3. Complete your work, pushing to your fork's feature branch. This will update your existing PR (no need to create new PRs)
+4. Update the status of your PR removing the **draft** status, and flag someone in the Core team to review and incorporate your work.
+5. Address any changes required. Pushing new commits to your branch to update the PR as needed.
+6. Once your PR is merged you can delete your feature branch and repeat this process for new features...
 
 
 
@@ -164,3 +196,10 @@ Use the body (lines after the top line) to explain why and what and *not* how; k
 ### But how can I write new lines if I'm using `git commit -m "Message"`?
 
 Don't use the `-m` switch. Use a text editor to write your commit message instead.
+
+--- 
+
+_Last updated: 20 March 2026_
+_Author: Julian Mirchandani_
+
+---
