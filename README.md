@@ -36,6 +36,23 @@ To get started:
   - Select the folder where you have cloned this repository
   - you will be able to see all the files now
 
+### Recommended: Use Dev Container (Docker)
+
+The `doubtfire-astro` repository includes a Docker development container, which simplifies setup.
+
+- Ensure you have Docker Desktop installed (https://www.docker.com/products/docker-desktop/).
+- Ensure you have the **Dev Containers** extension installed in Visual Studio Code.
+
+- Once the project is opened in Visual Studio Code (as described in Step 3)
+- You should then receive a prompt (usually bottom right) - click on **Reopen in Container**
+
+If you don't receive a prompt, you can do this manually:
+- Press `Cmd + Shift + P` (Mac) OR `Ctrl + Shift + P` (Windows)
+- Search: `Dev Containers: Reopen in Container`
+
+VS Code will then build and start the container.
+
+
 4. To make changes and/or add content to OnTrack Technical documentation website:
   - Go to the ```src``` folder
   - New pages or changes to existing pages can be made by navigating to ```content``` folder
@@ -59,17 +76,21 @@ To get started:
   - This will load the website locally
   - For any additional commands on Starlight refer to ```starlight.md```
 
-### If you have trouble running "npm run dev":
+### If you have trouble running "npm run dev"
 
-- Ensure you have "Node.js" installed (v18 or later)
+Using the Dev Container is recommended as it should avoid most local set up issues. 
+
+However, if you are not using the Dev Container:
+
+- Ensure you have `Node.js` installed (v18 or later)
   - Navigate to most up to date Node.js website - https://nodejs.org/en/download
   - Follow instructions as per your system requirements
   - Confirm "Node.js" installation using:
-  node -v
-- Ensure "npm" dependencies are installed (__do this in the "doubtfire-astro" repo__)
-  - Run the "npm install" command and let it install
+  `node -v`
+- Ensure `npm` dependencies are installed (__do this in the `doubtfire-astro` repo__)
+  - Run the `npm install` command and let it install
   - Confirm npm is installed using:
-  npm -v
+  `npm -v`
 
 
 ## Pushing changes to Thoth Tech doubtfire-astro repository
