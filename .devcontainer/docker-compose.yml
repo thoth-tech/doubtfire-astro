@@ -1,12 +1,15 @@
 services:
-  astro-dev:
+  df-astro-dev:
     build:
       context: ../
       dockerfile: Dockerfile
     ports:
-      - "4321:4321"
+      - "4322:4322"
     volumes:
       - ..:/site
-      - astro-node_modules:/site/node_modules
+      - df-astro-node_modules:/site/node_modules
+    tty: true
+    stdin_open: true
+    command: sleep infinity
 volumes:
-  astro-node_modules:
+  df-astro-node_modules:
