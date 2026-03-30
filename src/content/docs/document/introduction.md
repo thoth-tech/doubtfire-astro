@@ -15,7 +15,7 @@ As a core project of Thoth Tech, we prioritise sustainability, innovation, and c
 OnTrack is a decoupled system currently undergoing significant modernisation:
 - **Frontend:** We are actively migrating from legacy AngularJS/CoffeeScript to **Angular 17 and TypeScript** to improve maintainability and accessibility. 
 - **Backend:** The platform is built on a robust **Ruby on Rails** backbone.
-**Deployment:** We utilise **Docker** to ensure deployment efficiency and flexibility.
+- **Deployment:** We utilise **Docker** to ensure deployment efficiency and flexibility.
 
 ## Trimester Goals
 
