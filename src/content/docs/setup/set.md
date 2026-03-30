@@ -61,8 +61,8 @@ Use this method if you prefer to manage dependencies (Ruby, Node, etc.) directly
 2. **Clone with Submodules:**
 ```bash
 git clone --recurse submodules [https://github.com/YOUR_USERNAME/doubtfire-deploy](https://github.com/YOUR_USERNAME/doubtfire-deploy)
-```
 cd doubtfire-deploy
+```
 3. **Configure Remotes:** Run the following command to set your fork as the remote: 
 ```bash
 ./change_remotes.sh
