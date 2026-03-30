@@ -14,12 +14,13 @@ title: Initial Setup
 If this is your first time using Git on this machine, you must configure your identity. This information is attached to every commit you make.
 
 1. **Set your name:**
-'''bash
+```bash
 git config --global.username "Your Name"
+```
 2. **Set your email:**
-'''bash
+```bash
 git config --global user.email "username@users.noreply.github.com"
-
+```
 :::note[Privacy Tip]
 Using your GitHub-provided noreply email address keeps your personal email private in the public commit history. You can find your specific address in your GitHub Email Settings.
 :::
@@ -29,8 +30,9 @@ Using your GitHub-provided noreply email address keeps your personal email priva
 This enables you to contribute to the project documentation. You should also read the [documentation contribution guidelines](https://github.com/thoth-tech/documentation/blob/main/CONTRIBUTING.md).
 
 Terminal window
-
+```bash
 git clone https://github.com/thoth-tech/doubtfire-astro.git
+```
 
 ## WSL2
 
@@ -57,11 +59,18 @@ Use this method if you prefer to manage dependencies (Ruby, Node, etc.) directly
 
 1. **Fork the repositories:** Fork [doubtfire-deploy](https://github.com/thoth-tech/doubtfire-deploy), [doubtfire-api](https://github.com/thoth-tech/doubtfire-api), and [doubtfire-web](https://github.com/thoth-tech/doubtfire-web).
 2. **Clone with Submodules:**
-'''bash
+```bash
 git clone --recurse submodules [https://github.com/YOUR_USERNAME/doubtfire-deploy](https://github.com/YOUR_USERNAME/doubtfire-deploy)
+```
 cd doubtfire-deploy
-3. **Configure Remotes:** Run the following command to set your fork as the remote: ./change_remotes.sh
-4. **Add Team Remote:** Use the username provided by your Mentor: git remote add task-view-submission [https://github.com/PROVIDED_USERNAME/doubtfire-deploy](https://github.com/PROVIDED_USERNAME/doubtfire-deploy)
+3. **Configure Remotes:** Run the following command to set your fork as the remote: 
+```bash
+./change_remotes.sh
+```
+4. **Add Team Remote:** Use the username provided by your Mentor: 
+```bash
+git remote add task-view-submission [https://github.com/PROVIDED_USERNAME/doubtfire-deploy](https://github.com/PROVIDED_USERNAME/doubtfire-deploy)
+```
 5. **Final Steps:** Follow the remaining instructions in the [doubtfire-deploy contributing file](https://github.com/doubtfire-lms/doubtfire-deploy/blob/development/CONTRIBUTING.md#working-with-docker-compose).
 
 
