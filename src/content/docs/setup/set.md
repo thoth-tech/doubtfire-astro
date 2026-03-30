@@ -9,12 +9,20 @@ title: Initial Setup
 - Open the **OnTrack Planner Board** tab at the top to view and assign yourself to active tasks.
 - If you cannot see the board, contact Brain Dang to be added to the cohort's workspace.
 
-## Configuring git (global)
+## Configuring Git (Global)
 
-If you haven’t already, you must configure git.
+If this is your first time using Git on this machine, you must configure your identity. This information is attached to every commit you make.
 
-1. Set your git username by git config –global user.name “FIRST_NAME LAST_NAME”, whereFIRST_NAME is your first name and LAST_NAME is your last name.
-2. Set your git email by git config –global user.email “YOUR_EMAIL”, where YOUR_EMAIL is your email. It is advised that you use your @users.noreply.github.com email address, which is, by default, &lt;username&gt;@users.noreply.github.com, where &lt;username&gt; is your GitHub username.
+1. **Set your name:**
+'''bash
+git config --global.username "Your Name"
+2. **Set your email:**
+'''bash
+git config --global user.email "username@users.noreply.github.com"
+
+:::note[Privacy Tip]
+Using your GitHub-provided noreply email address keeps your personal email private in the public commit history. You can find your specific address in your GitHub Email Settings.
+:::
 
 ## Cloning the Documentation
 
@@ -30,34 +38,32 @@ If you are on a Windows machine, then we recommend that you install WSL2.
 
 ## Get OnTrack Running on Local Machine
 
-You need a terminal that supports shell scripts (on Windows, you need WSL2, Msys2, or Cygwin).
+There are two ways to set up the project. We **strongly recommend** Option 1 for the most consistent experience.
 
-1. Fork [doubtfire-deploy](https://github.com/doubtfire-lms/doubtfire-deploy), [doubtfire-api](https://github.com/doubtfire-lms/doubtfire-api), and [doubtfire-web](https://github.com/doubtfire-lms/doubtfire-web)
-2. Clone your [doubtfire-deploy](https://github.com/doubtfire-lms/doubtfire-deploy). Make sure to fetch submodules to get the sub-projects.
+### Option 1: VS Code Dev Containers (Recommended)
 
-Terminal window
+:::tip[Why choose this?]
+This is the fastest setup method. It automatically configures Docker, Ruby, and Node.js inside a pre-set container, preventing almost all "it works on my machine" errors.
+:::
 
-git clone –recurse-submodules <https://github.com/YOUR_USERNAME/doubtfire-deploy>
+1. **Prerequisites:** Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) and the [Dev Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) in VS Code.
+2. **Fork & Clone:** Fork and clone the 'doubtfire-deploy' repository as described in the Manual Setup below.
+3. **Launch:** Open the folder in VS Code. When the pop-up appears in the bottom right, click **"Reopen in Container"**.
+4. **Wait:** VS Code will build the environment. Once finished, you are ready to develop!
 
-1. cd into the directory.
+### Option 2: Manual Local Setup
 
-Terminal window
+Use this method if you prefer to manage dependencies (Ruby, Node, etc.) directly on your host machine. **Note:** On Windows, you will need a terminal that supports shell scripts (WSL2, MSYS2, or Cygwin).
 
+1. **Fork the repositories:** Fork [doubtfire-deploy](https://github.com/thoth-tech/doubtfire-deploy), [doubtfire-api](https://github.com/thoth-tech/doubtfire-api), and [doubtfire-web](https://github.com/thoth-tech/doubtfire-web).
+2. **Clone with Submodules:**
+'''bash
+git clone --recurse submodules [https://github.com/YOUR_USERNAME/doubtfire-deploy](https://github.com/YOUR_USERNAME/doubtfire-deploy)
 cd doubtfire-deploy
+3. **Configure Remotes:** Run the following command to set your fork as the remote: ./change_remotes.sh
+4. **Add Team Remote:** Use the username provided by your Mentor: git remote add task-view-submission [https://github.com/PROVIDED_USERNAME/doubtfire-deploy](https://github.com/PROVIDED_USERNAME/doubtfire-deploy)
+5. **Final Steps:** Follow the remaining instructions in the [doubtfire-deploy contributing file](https://github.com/doubtfire-lms/doubtfire-deploy/blob/development/CONTRIBUTING.md#working-with-docker-compose).
 
-1. Open a terminal that supports sh scripts (on Windows, you require WSL2, Msys2, or Cygwin). Run the following command to set your fork as the remote.
-
-Terminal window
-
-./change_remotes.sh
-
-1. Your delivery lead provides you with the GitHub username to use in this command. This allows you to use git fetch task-view-submission, git pull task-view-submission, and git push task-view-submission.
-
-Terminal window
-
-git remote add task-view-submission <https://github.com/PROVIDED_USERNAME/doubtfire-deploy>
-
-1. You can now follow the remaining instructions, from instruction four, in the doubtfire-deploy [contributing file](https://github.com/doubtfire-lms/doubtfire-deploy/blob/development/CONTRIBUTING.md#working-with-docker-compose).
 
 ## What Next?
 
@@ -67,15 +73,11 @@ Now that your environment is set up, familiarise yourself with the current proje
 - **T1 2026 Cohort Update:** Assist in updating all project references from 2025 to the current **T1 2026** cohort.
 - **Refine Guides and Tutorials:** Review existing setup files (like this one!) to ensure they match the current repository structure ('doubtfire-astro').
 - **Techical Documentation:**
-    - **Timestamp & Author:** Implement a global "last updated" and "author" field for all documentation pages.
-    - **Repository Cleanup:** Tidy the Microsoft Teams and Sharepoint documentation repositories to remove redundant legacy files.
+- **Timestamp & Author:** Implement a global "last updated" and "author" field for all documentation pages.
+- **Repository Cleanup:** Tidy the Microsoft Teams and Sharepoint documentation repositories to remove redundant legacy files.
 - **Pull Request Management:** Monitor and close out any remaining pull requests against the documentation repositories to keep the main branch clean.
 
 ## Technical & Specialised Tasks
 
 - **Security & Databases:** If you have specialised knowledge in cyber-security or database adminstration, check the specialised tasks on the Planner board for implementation reviews.
 - **Git Integration:** Examine how Git can be better implemented on the back-end of the OnTrack product as part of the current sprint.
-
-## Helpful Points
-
-- If you are using Windows as your primary operating system and you have not downloaded, installed, and/or set-up MinGW, then a former team found the Linux subsystem [WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install) and [Docker Desktop WSL 2 backend](https://docs.docker.com/desktop/windows/wsl/) as a helpful development environment.
