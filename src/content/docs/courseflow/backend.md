@@ -76,6 +76,21 @@ We simply need routes that can get/add/update/delete specializations:
 
 The Specialization API provides a set of routes to manage specializations in a system. It allows users to retrieve all specializations (`GET /specialization`) or a specific one by ID (`GET /specialization/specializationId`), add new specializations (`POST /specialization`), update existing ones by ID (`PUT /specialization/specializationId`), and delete specializations by ID (`DELETE /specialization/specializationId`). Each route interacts with specialization data, supporting standard CRUD (Create, Read, Update, Delete) operations.
 
+#### Requirement:
+
+Requirements define specific academic criteria or conditions that must be met within courses or units in the CourseFlow system. They specify what students need to complete, with optional minimum and maximum values, and are organized into requirement set groups. Requirements can be associated with either specific units or entire courses depending on their type.
+
+| Endpoint                            | Description                               | Request Body | Response Body |
+| ----------------------------------- | ----------------------------------------- | ------------ | ------------- |
+| GET /requirement                    | Get all requirements                      | None         | Requirement[] |
+| GET /requirement/unitId/:unitId     | Get requirements filtered by unit ID      | None         | Requirement[] |
+| GET /requirement/courseId/:courseId | Get requirements filtered by course ID    | None         | Requirement[] |
+| POST /requirement                   | Create a new requirement                  | Requirement  | Requirement   |
+| PUT /requirement/:id                | Update an existing requirement via its id | Requirement  | Requirement   |
+| DELETE /requirement/:id             | Delete a requirement via its id           | None         | None          |
+
+Requirements form the foundation of the CourseFlow system's academic structure, working in conjunction with RequirementSet to define what students must accomplish. Each requirement includes a type and category classification, detailed description, and links to requirement set groups that specify the units or courses needed to fulfill the requirement.
+
 #### RequirementsSet:
 
 This particular entity works in conjunction with Requirements where this provides a mechanism to list out required units that belong to a requirement. Additionally, this also provides a way to chain requirements to handle requirement choices. The routes will be as follow:
