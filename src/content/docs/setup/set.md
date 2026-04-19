@@ -1,81 +1,67 @@
 ---
 title: Initial Setup
+description: Guide for setting up the local development environment.
+lastUpdated: 19-04-2026
+author: Anagh Wadhwa
 ---
 
-## Task Management (Microsoft Planner)
+## Configuring Git (Global)
 
-- Ensure you have access to the **Thoth Tech** Microsoft Teams Channel. If not, please contact Morgaine so she can add you to the channel.
-- Navigate to the **OnTrack** channel.
-- Open the **OnTrack Planner Board** tab at the top to view and assign yourself to active tasks.
-- If you cannot see the board, contact Brain Dang to be added to the cohort's workspace.
+Before contributing to OnTrack, you must configure your Git identity. This information is attached to every commit you make.
 
-## Configuring git (global)
-
-If you haven’t already, you must configure git.
-
-1. Set your git username by git config –global user.name “FIRST_NAME LAST_NAME”, whereFIRST_NAME is your first name and LAST_NAME is your last name.
-2. Set your git email by git config –global user.email “YOUR_EMAIL”, where YOUR_EMAIL is your email. It is advised that you use your @users.noreply.github.com email address, which is, by default, &lt;username&gt;@users.noreply.github.com, where &lt;username&gt; is your GitHub username.
+1. **Set your name:**
+```bash
+git config --global.username "Your Name"
+```
+2. **Set your email:**
+```bash
+git config --global user.email "username@users.noreply.github.com"
+```
+:::note[Privacy Tip]
+Using your GitHub-provided noreply email address keeps your personal email private in the public commit history. You can find your specific address in your GitHub Email Settings.
+:::
 
 ## Cloning the Documentation
 
-This enables you to contribute to the project documentation. You should also read the [documentation contribution guidelines](https://github.com/thoth-tech/documentation/blob/main/CONTRIBUTING.md).
+To contribute to the technical documentation, clone the doubtfire-astro repository:
+```bash
+git clone [https://github.com/thoth-tech/doubtfire-astro.git](https://github.com/thoth-tech/doubtfire-astro.git)
+```
 
-Terminal window
+## Development Environment Setup
 
-git clone https://github.com/thoth-tech/doubtfire-astro.git
+There are two primary ways to set up the OnTrack project locally. We **strongly recommend** Option 1 for the most consistent experience across different operating systems.
 
-## WSL2
+## Option 1: VS Code Dev Containers (Recommended)
 
-If you are on a Windows machine, then we recommend that you install WSL2.
+:::tip[Why choose this?]
+This is the fastest setup method. It automatically configures Docker, Ruby, and Node.js inside a pre-set container, preventing environment-specific errors.
+:::
 
-## Get OnTrack Running on Local Machine
+1. **Prerequisites:** Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) and the [Dev Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) in VS Code.
+2. **Fork & Clone:** Fork and clone the 'doubtfire-deploy' repository as described in the Manual Setup below.
+3. **Launch:** Open the folder in VS Code. When the pop-up appears in the bottom right, click **"Reopen in Container"**.
+4. **Wait:** VS Code will build the environment. Once finished, you are ready to develop!
 
-You need a terminal that supports shell scripts (on Windows, you need WSL2, Msys2, or Cygwin).
+## Option 2: Manual Local Setup
 
-1. Fork [doubtfire-deploy](https://github.com/doubtfire-lms/doubtfire-deploy), [doubtfire-api](https://github.com/doubtfire-lms/doubtfire-api), and [doubtfire-web](https://github.com/doubtfire-lms/doubtfire-web)
-2. Clone your [doubtfire-deploy](https://github.com/doubtfire-lms/doubtfire-deploy). Make sure to fetch submodules to get the sub-projects.
+Use this method if you prefer to manage dependencies (Ruby, Node, etc.) directly on your host machine. **Note:** On Windows, you will need a terminal that supports shell scripts (WSL2, MSYS2, or Cygwin).
 
-Terminal window
-
-git clone –recurse-submodules <https://github.com/YOUR_USERNAME/doubtfire-deploy>
-
-1. cd into the directory.
-
-Terminal window
-
+1. **Fork the repositories:** Fork [doubtfire-deploy](https://github.com/thoth-tech/doubtfire-deploy), [doubtfire-api](https://github.com/thoth-tech/doubtfire-api), and [doubtfire-web](https://github.com/thoth-tech/doubtfire-web).
+2. **Clone with Submodules:**
+```bash
+git clone --recurse submodules [https://github.com/YOUR_USERNAME/doubtfire-deploy](https://github.com/YOUR_USERNAME/doubtfire-deploy)
 cd doubtfire-deploy
-
-1. Open a terminal that supports sh scripts (on Windows, you require WSL2, Msys2, or Cygwin). Run the following command to set your fork as the remote.
-
-Terminal window
-
+```
+3. **Configure Remotes:** Run the following command to set your fork as the remote: 
+```bash
 ./change_remotes.sh
+```
+4. **Final Steps:** Follow the remaining instructions in the [doubtfire-deploy contributing file](https://github.com/doubtfire-lms/doubtfire-deploy/blob/development/CONTRIBUTING.md#working-with-docker-compose).
 
-1. Your delivery lead provides you with the GitHub username to use in this command. This allows you to use git fetch task-view-submission, git pull task-view-submission, and git push task-view-submission.
+## Contribution Workflow
 
-Terminal window
-
-git remote add task-view-submission <https://github.com/PROVIDED_USERNAME/doubtfire-deploy>
-
-1. You can now follow the remaining instructions, from instruction four, in the doubtfire-deploy [contributing file](https://github.com/doubtfire-lms/doubtfire-deploy/blob/development/CONTRIBUTING.md#working-with-docker-compose).
-
-## What Next?
-
-Now that your environment is set up, familiarise yourself with the current project goals and documentation.
-
-- **Check the Planner Board:** Navigate to the [OnTrack Planner Board](https://planner.cloud.microsoft/webui/plan/njykIFLDn0iAY1at7tACfcgADgBS/view/board?tid=d02378ec-1688-46d5-8540-1c28b5f470f6) to view the current backlog.
-- **T1 2026 Cohort Update:** Assist in updating all project references from 2025 to the current **T1 2026** cohort.
-- **Refine Guides and Tutorials:** Review existing setup files (like this one!) to ensure they match the current repository structure ('doubtfire-astro').
-- **Techical Documentation:**
-    - **Timestamp & Author:** Implement a global "last updated" and "author" field for all documentation pages.
-    - **Repository Cleanup:** Tidy the Microsoft Teams and Sharepoint documentation repositories to remove redundant legacy files.
-- **Pull Request Management:** Monitor and close out any remaining pull requests against the documentation repositories to keep the main branch clean.
-
-## Technical & Specialised Tasks
-
-- **Security & Databases:** If you have specialised knowledge in cyber-security or database adminstration, check the specialised tasks on the Planner board for implementation reviews.
-- **Git Integration:** Examine how Git can be better implemented on the back-end of the OnTrack product as part of the current sprint.
-
-## Helpful Points
-
-- If you are using Windows as your primary operating system and you have not downloaded, installed, and/or set-up MinGW, then a former team found the Linux subsystem [WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install) and [Docker Desktop WSL 2 backend](https://docs.docker.com/desktop/windows/wsl/) as a helpful development environment.
+Once your environment is set up, you can begin contributing to the project:
+- **Explore the Architecture:** Familiarise yourself with how the Angular frontend communicates with the Rails API.
+- **Review Issues:** Check the repository's GitHub Issues for a list of bugs or feature requests.
+- **Documentation Updates:** Ensure all guides match the current repository structure and technical requirements of the latest OnTrack release.
