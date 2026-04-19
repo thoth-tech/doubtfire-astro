@@ -1,5 +1,8 @@
 ---
 title: OnTrack Technical Documentation
+description: Overview of the OnTrack project and architecture.
+lastUpdated: 19-04-2026
+author: Anagh Wadhwa
 ---
 
 ## Introduction

@@ -1,5 +1,8 @@
 ---
 title: Initial Setup
+description: Guide for setting up the local development environment.
+lastUpdated: 19-04-2026
+author: Anagh Wadhwa
 ---
 
 ## Configuring Git (Global)
