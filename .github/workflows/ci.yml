@@ -10,13 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Linelint
         uses: fernandrone/linelint@master
       - name: Set up Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
-          node-version: 16.14.2
+          node-version: 20
+          cache: npm
       - name: Install dependencies
         run: npm install
       - name: Prettier
@@ -29,3 +30,8 @@ jobs:
           rm vale.tar.gz
           vale --version
           npm run prose:check
+
+      - name: Build
+        run: npm run build
+
+        
