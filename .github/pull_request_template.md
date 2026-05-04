@@ -1,36 +1,30 @@
-# Description
+## Description
+<!-- Include a summary of the change and the logic behind it. List any dependencies required. -->
 
-_Please include a summary of the change and which issue is fixed. Please also include relevant
-motivation and context. List any dependencies that are required for this change._
-
-Fixes # (issue)
+## Related Task/Issue
+- **Microsoft Planner Card:** <!-- Link the card here -->
+- **GitHub Issue:** Fixes # (issue)
 
 ## Type of change
-
-_Please delete options that are not relevant._
-
 - [ ] Bug fix (non-breaking change which fixes an issue)
 - [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as
-      expected)
+- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
 - [ ] Documentation (update or new)
 
 ## How Has This Been Tested?
+<!-- Describe the tests you ran to verify changes and provide instructions for reproduction. -->
 
-_Please describe the tests that you ran to verify your changes. Provide instructions so we can
-reproduce. Please also list any relevant details for your test configuration_
-
-## Testing Checklist
-
-- [ ] Tested in latest Chrome
-- [ ] Tested in latest Safari
-- [ ] Tested in latest Firefox
+### Testing Checklist
+- [ ] Tested in latest version of Chrome
+- [ ] Tested in latest version of Edge
+- [ ] Tested in latest version of Safari
+- [ ] Tested in latest version of Firefox
 
 ## Checklist
-
 - [ ] My code follows the style guidelines of this project
 - [ ] I have performed a self-review of my own code
 - [ ] I have commented my code in hard-to-understand areas
+- [ ] I have updated the 'lastUpdated' and 'author' fields in the markdown frontmatter
 - [ ] I have made corresponding changes to the documentation
 - [ ] My changes generate no new warnings
-- [ ] I have requested a review from ... on the Pull Request
+- [ ] I have requested a review from other peers
