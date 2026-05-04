@@ -10,7 +10,7 @@ if [ -f "$CONFIG_FILE" ]; then
 fi
 
 # Set variables with defaults
-API_URL ="${API_URL:-http://localhost:3000}"
+API_URL="${API_URL:-http://localhost:3000}"
 TARGET_URL="${API_URL}/api/auth"
 USERNAME_FIELD="username"
 PASSWORD_FIELD="password"
