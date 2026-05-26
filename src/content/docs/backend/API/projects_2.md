@@ -140,91 +140,121 @@ GET /api/projects
 
 - URL: `/api/projects`
 - Method: `GET`
-- Parameters: 
-    
-    | Parameter          | Description                                             | Parameter Type | Data Type | Mandatory |
-    |--------------------|---------------------------------------------------------|----------------|-----------|-----------|
-    | include_inactive   | Include projects for units that are no longer active?   | query          | boolean   | No        |
-    | Username           | Username                                                | header         | string    | Yes       |
-    | Auth_Token         | Authentication token                                    | header         | string    | Yes       |
+- Parameters:
 
-- Response: `200 OK`.    
+    | Parameter                 | Description                                              | Parameter Type | Data Type | Mandatory |
+    |---------------------------|----------------------------------------------------------|----------------|-----------|-----------|
+    | include_inactive          | Include projects for units that are no longer active?    | query          | boolean   | No        |
+    | include_task_definitions  | Include task definitions for each project's unit         | query          | boolean   | No        |
+    | Username                  | Username                                                 | header         | string    | Yes       |
+    | Auth_Token                | Authentication token                                     | header         | string    | Yes       |
+
+- Response: `200 OK`.
 
 -   Example Request:
     ```bash
-    curl -X GET --header 'Accept: application/json' --header 'Username: student_1' --header 'Auth_Token: bxzSEr86Qgivu5saj6NQ' 'http://localhost:3000/api/projects?include_inactive=true'
-    ```
+    curl -X GET --header 'Accept: application/json' --header 'Username: student_1' --header 'Auth_Token: bxzSEr86Qgivu5saj6NQ' 'http://localhost:3000/api/projects?include_inactive=true&include_task_definitions=true'
 
+    ```
 - Response Body:
     ```json
-        [
-            {
-                "id": 2,
-                "campus_id": 2,
-                "user_id": 24,
-                "unit": {
-                "code": "COS10001",
-                "id": 1,
-                "name": "Introduction to Programming",
-                "my_role": "Student",
-                "start_date": "2024-03-09",
-                "end_date": "2024-06-08",
-                "active": true
-                },
-                "target_grade": 3,
-                "portfolio_available": false
-            },
-            {
-                "id": 20,
-                "campus_id": 3,
-                "user_id": 24,
-                "unit": {
-                "code": "COS20007",
-                "id": 2,
-                "name": "Object Oriented Programming",
-                "my_role": "Student",
-                "start_date": "2024-03-09",
-                "end_date": "2024-06-08",
-                "active": true
-                },
-                "target_grade": 1,
-                "portfolio_available": true
-            },
-            {
-                "id": 39,
-                "campus_id": 1,
-                "user_id": 24,
-                "unit": {
-                "code": "COS30046",
-                "id": 3,
-                "name": "Artificial Intelligence for Games",
-                "my_role": "Student",
-                "start_date": "2024-03-09",
-                "end_date": "2024-06-08",
-                "active": true
-                },
-                "target_grade": 0,
-                "portfolio_available": false
-            },
-            {
-                "id": 51,
-                "campus_id": 2,
-                "user_id": 24,
-                "unit": {
-                "code": "COS30243",
-                "id": 4,
-                "name": "Game Programming",
-                "my_role": "Student",
-                "start_date": "2024-03-09",
-                "end_date": "2024-06-08",
-                "active": true
-                },
-                "target_grade": 0,
-                "portfolio_available": false
-            }
-        ]
+    [
+        {
+    "id": 1,
+    "campus_id": 1,
+    "user_id": 1,
+    "unit": {
+      "code": "UNIT1001",
+      "id": 1,
+      "name": "Introduction to Programming",
+      "my_role": "Student",
+      "start_date": "2026-04-14",
+      "end_date": "2026-06-30",
+      "active": true,
+      "task_definitions": [
+        {
+          "id": 1,
+          "unit_id": 1,
+          "name": "Task 1.1P",
+          "description": "First task description",
+          "weighting": 4,
+          "target_date": "2026-04-29T10:00:00.000Z",
+          "created_at": "2026-04-01T06:00:00.000Z",
+          "updated_at": "2026-04-01T06:00:00.000Z",
+          "abbreviation": "1.1P",
+          "upload_requirements": [],
+          "target_grade": 0,
+          "restrict_status_updates": false,
+          "plagiarism_report_url": null,
+          "plagiarism_updated": false,
+          "plagiarism_warn_pct": 80,
+          "group_set_id": null,
+          "due_date": "2026-04-13T10:00:00.000Z",
+          "start_date": "2026-04-15T10:00:00.000Z",
+          "is_graded": false,
+          "max_quality_pts": 0,
+          "tutorial_stream_id": null,
+          "assessment_enabled": false,
+          "overseer_image_id": null,
+          "tii_group_id": null,
+          "similarity_language": "c",
+          "scorm_enabled": false,
+          "scorm_allow_review": false,
+          "scorm_bypass_test": false,
+          "scorm_time_delay_enabled": false,
+          "scorm_attempt_limit": 0,
+          "assess_in_portfolio_only": false,
+          "use_resources_for_jplag_base_code": false,
+          "lock_assessments_to_tutorial_stream": false
+        }
+      ]
+    },
+    "target_grade": 0,
+    "spec_con_days": 0,
+    "portfolio_available": false,
+    "tasks": [
+      {
+        "id": 1,
+        "task_definition_id": 1,
+        "status": "complete",
+        "due_date": "2026-04-29",
+        "submission_date": "2026-05-03",
+        "completion_date": "2026-05-03",
+        "extensions": 0,
+        "scorm_extensions": 0,
+        "times_assessed": 1,
+        "quality_pts": -1,
+        "include_in_portfolio": true,
+        "similarity_flag": false,
+        "num_new_comments": 0
+      }
+    ],
+    "escalation_attempts_remaining": 3
+  },
+  {
+    "id": 2,
+    "campus_id": 1,
+    "user_id": 1,
+    "unit": {
+      "code": "UNIT2001",
+      "id": 2,
+      "name": "Data Structures and Algorithms",
+      "my_role": "Student",
+      "start_date": "2026-03-01",
+      "end_date": "2026-08-24",
+      "active": true,
+      "task_definitions": []
+    },
+    "target_grade": 0,
+    "spec_con_days": 0,
+    "portfolio_available": false,
+    "tasks": [],
+    "escalation_attempts_remaining": 3
+  }
+    ]
     ```
-------------------------------------------------------------
+    ------------------------------------------------------------
+
 
 ### POST: Enrol a student in a unit, creating them a project
 POST /api/projects
@@ -232,7 +262,6 @@ POST /api/projects
 - URL: `/api/projects`
 - Method: `POST`
 - Parameters:
-   
     | Parameter    | Description                        | Parameter Type | Data Type | Mandatory |
     |--------------|------------------------------------|----------------|-----------|-----------|
     | unit_id      | Unit Id                            | formData       | integer   | Yes       |
@@ -244,10 +273,9 @@ POST /api/projects
 - Response: `201 Created`.
 
 - Example Request:
-    ```bash
+```bash
     curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: application/json' --header 'Username: aadmin' --header 'Auth_Token: K6qnzaWKTQxSGzsUMUJm' -d 'unit_id=4&student_num=student_6&campus_id=1' 'http://localhost:3000/api/projects'
-    ```
-
+```
 - Response Body:
     ```json
         {
