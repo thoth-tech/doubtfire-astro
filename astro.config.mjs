@@ -34,7 +34,7 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Intial Setup',
+          label: 'Initial Setup',
           autogenerate: {
             directory: '/setup',
           },
@@ -44,7 +44,7 @@ export default defineConfig({
               link: '/frontend/page',
             },
             {
-              label: 'OnTrack Intial Setup Guidance',
+              label: 'OnTrack Initial Setup Guidance',
               link: '/setup/set',
             },
           ],
