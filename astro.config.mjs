@@ -256,6 +256,16 @@ export default defineConfig({
             directory: '/security',
           },
         },
+        {
+          label: 'Peer Progress Indicator',
+          items: [
+            {
+              label:'Research Document',
+              link: '/peer-progress-indicator/ppi-research/'
+            }
+            
+          ]
+        }
       ],
     }),
   ],
