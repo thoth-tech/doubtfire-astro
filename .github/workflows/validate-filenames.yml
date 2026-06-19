@@ -1,0 +1,83 @@
+# .github/workflows/validate-filenames.yml
+name: Check Filenames
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  check-filenames:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get list of changed files
+        id: files
+        run: |
+          files=$(gh pr view ${{ github.event.pull_request.number }} --json files --jq '.files[].path')
+          echo "files<<EOF" >> $GITHUB_OUTPUT
+          echo "$files" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Validate Filenames (cross-platform)
+        id: check
+        run: |
+          bad_files=""
+          while IFS= read -r file; do
+            fname=$(basename "$file")
+
+            # Check for illegal characters
+            if echo "$fname" | grep -qE '[:*?"<>|]'; then
+              bad_files="$bad_files\n$file (contains invalid characters)"
+            fi
+
+            # Check for trailing space or dot
+            if echo "$fname" | grep -qE '(\.|\s)$'; then
+              bad_files="$bad_files\n$file (ends with space or dot)"
+            fi
+
+            # Check for Windows reserved names (case-insensitive)
+            if echo "$fname" | grep -qiE '^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])(\..*)?$'; then
+              bad_files="$bad_files\n$file (reserved Windows filename)"
+            fi
+          done <<< "${{ steps.files.outputs.files }}"
+
+          if [ -n "$bad_files" ]; then
+            echo "bad_files<<EOF" >> $GITHUB_OUTPUT
+            echo -e "$bad_files" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+            exit 1
+          else
+            echo "bad_files=" >> $GITHUB_OUTPUT
+            echo "✅ All filenames are cross-platform safe."
+          fi
+
+      - name: Comment on PR if invalid filenames found
+        if: failure() && steps.check.outputs.bad_files != ''
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const badFiles = process.env.BAD_FILES || '';
+            if (badFiles.trim().length === 0) {
+              console.log("No bad files to report, skipping comment.");
+              return;
+            }
+            const body = [
+              "❌ Invalid Filenames Found (cross-platform check):",
+              "```",
+              badFiles.trim(),
+              "```",
+              "Please rename these files to remove reserved characters/names so they work across Windows, macOS, and Linux."
+            ].join("\n");
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body
+            });
+        env:
+          BAD_FILES: ${{ steps.check.outputs.bad_files }}
